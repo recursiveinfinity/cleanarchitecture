@@ -1,10 +1,10 @@
 package com.cleanarchitecture.presentation
 
 import android.app.Application
-import com.cleanarchitecture.presentation.di.mNetworkModules
-import com.cleanarchitecture.presentation.di.mRepositoryModules
-import com.cleanarchitecture.presentation.di.mUseCaseModules
-import com.cleanarchitecture.presentation.di.mViewModels
+import com.cleanarchitecture.presentation.di.networkModules
+import com.cleanarchitecture.presentation.di.repositoryModules
+import com.cleanarchitecture.presentation.di.useCaseModules
+import com.cleanarchitecture.presentation.di.viewModels
 import org.koin.android.ext.android.startKoin
 
 class App : Application() {
@@ -16,10 +16,10 @@ class App : Application() {
 
     private fun loadKoin() {
         startKoin(this,
-                listOf(mNetworkModules,
-                        mViewModels,
-                        mRepositoryModules,
-                        mUseCaseModules
+                listOf(networkModules,
+                        viewModels,
+                        repositoryModules,
+                        useCaseModules
                 )
 
         )
