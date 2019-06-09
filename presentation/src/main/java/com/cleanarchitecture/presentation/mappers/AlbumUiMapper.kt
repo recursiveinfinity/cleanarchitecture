@@ -6,7 +6,7 @@ import com.cleanarchitecture.presentation.news.UiAlbum
 
 class AlbumUiMapper : Mapper<List<DomainAlbum>, List<UiAlbum>>() {
 
-    override fun toUiList(from: List<DomainAlbum>): List<UiAlbum> = from.map {
+    override fun toUi(from: List<DomainAlbum>) = from.map {
         toUi(it)
     }
 
