@@ -22,11 +22,11 @@ class AlbumsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_albums)
         initialiseView()
-        albumsViewModel.getAlbums()
     }
 
     override fun onStart() {
         super.onStart()
+        albumsViewModel.getAlbums()
         albumsViewModel.loadingLiveData.observe(this, Observer {
             loading(it)
         })
@@ -47,6 +47,7 @@ class AlbumsActivity : AppCompatActivity() {
     private fun loading(isLoading: Boolean) {
 
     }
+
 
     private fun content(it: List<UiAlbum>) {
         it.let { response ->
