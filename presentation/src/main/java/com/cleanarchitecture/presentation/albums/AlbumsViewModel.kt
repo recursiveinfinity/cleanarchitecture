@@ -1,4 +1,4 @@
-package com.cleanarchitecture.presentation.news
+package com.cleanarchitecture.presentation.albums
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
