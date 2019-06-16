@@ -1,13 +1,13 @@
-package com.cleanarchitecture.presentation.news
+package com.cleanarchitecture.presentation.albums
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import cleanarchitecture.news_sample_app.R
+import com.cleanarchitecture.news_sample_app.R
 import kotlinx.android.synthetic.main.list_item_album.view.*
 
-class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
+class AlbumsAdapter(val onItemClick: (UiAlbum?) -> Unit) : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
 
     var albums = mutableListOf<UiAlbum>()
 
@@ -20,11 +20,14 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>() {
         holder.bind(albums[position])
     }
 
-    class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(uiAlbum: UiAlbum) {
             with(itemView) {
                 tv_title.text = uiAlbum.description
+                setOnClickListener {
+                    onItemClick.invoke(uiAlbum)
+                }
             }
         }
     }

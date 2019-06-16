@@ -1,10 +1,7 @@
 package com.cleanarchitecture.presentation
 
 import android.app.Application
-import com.cleanarchitecture.presentation.di.networkModules
-import com.cleanarchitecture.presentation.di.repositoryModules
-import com.cleanarchitecture.presentation.di.useCaseModules
-import com.cleanarchitecture.presentation.di.viewModels
+import com.cleanarchitecture.presentation.di.*
 import org.koin.android.ext.android.startKoin
 
 class App : Application() {
@@ -19,7 +16,8 @@ class App : Application() {
                 listOf(networkModules,
                         viewModels,
                         repositoryModules,
-                        useCaseModules
+                        useCaseModules,
+                        navigator
                 )
 
         )

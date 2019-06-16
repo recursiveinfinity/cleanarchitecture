@@ -2,7 +2,7 @@ package com.cleanarchitecture.presentation.mappers
 
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.albums.DomainAlbum
-import com.cleanarchitecture.presentation.news.UiAlbum
+import com.cleanarchitecture.presentation.albums.UiAlbum
 
 class AlbumUiMapper : Mapper<List<DomainAlbum>, List<UiAlbum>>() {
 
