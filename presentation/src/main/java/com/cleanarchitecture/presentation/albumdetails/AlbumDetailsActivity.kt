@@ -18,7 +18,7 @@ class AlbumDetailsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album_details)
         supportActionBar?.applyToolbarUp()
-        supportActionBar?.title = "Album Details"
+        supportActionBar?.title = getString(R.string.album_details_title)
 
         tv_album_details_userId.text = album.userId
         tv_album_details_description.text = album.description
