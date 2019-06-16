@@ -22,12 +22,12 @@ class AlbumsViewModel(private val getAlbumsUseCase: GetAlbumsUseCase,
 
     fun getAlbums() {
         val disposable = getAlbumsUseCase.execute()
-                .map { mapper.toUiList(it) }
+                .map { mapper.toUi(it) }
                 .subscribe({ response: List<UiAlbum> ->
                     contentLiveData.value = response
                 }, { error: Throwable ->
                     Log.d(TAG, error.message)
-                    errorLiveData.value = uiErrorMapper.toUiList(error)
+                    errorLiveData.value = uiErrorMapper.toUi(error)
                 })
         addDisposable(disposable)
     }
