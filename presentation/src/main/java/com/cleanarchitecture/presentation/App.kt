@@ -17,7 +17,8 @@ class App : Application() {
                         viewModels,
                         repositoryModules,
                         useCaseModules,
-                        navigator
+                        navigator,
+                        fragments
                 )
 
         )

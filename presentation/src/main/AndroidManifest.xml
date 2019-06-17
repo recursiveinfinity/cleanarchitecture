@@ -30,6 +30,15 @@
         </activity-alias>
 
         <activity
+            android:name="com.cleanarchitecture.presentation.home.HomeActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${nav_uri}.home" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name="com.cleanarchitecture.presentation.albums.AlbumsActivity"
             android:exported="false">
             <intent-filter>

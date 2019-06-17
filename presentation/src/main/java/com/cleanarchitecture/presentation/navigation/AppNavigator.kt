@@ -41,4 +41,10 @@ class AppNavigator(private val activity: Activity) : Navigator {
             activity.startActivity(this)
         }
     }
+
+    override fun toHome() {
+        createIntentFromAction("home").apply {
+            activity.startActivity(this)
+        }
+    }
 }

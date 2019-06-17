@@ -11,6 +11,7 @@ import com.cleanarchitecture.presentation.common.ErrorUiMapper
 import com.cleanarchitecture.presentation.mappers.AlbumUiMapper
 import com.cleanarchitecture.presentation.navigation.AppNavigator
 import com.cleanarchitecture.presentation.albums.AlbumsViewModel
+import com.cleanarchitecture.presentation.common.FragmentsTransactionsManager
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
@@ -38,6 +39,10 @@ val viewModels = module {
 
 val navigator = module {
     factory { (activity: AppCompatActivity) -> AppNavigator(activity) }
+}
+
+val fragments = module {
+    factory { (activity: AppCompatActivity) -> FragmentsTransactionsManager(activity.supportFragmentManager) }
 }
 
 private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
