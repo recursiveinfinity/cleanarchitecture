@@ -4,8 +4,7 @@
     <item
         android:id="@+id/bottom_nav_home"
         android:icon="@android:drawable/ic_btn_speak_now"
-        android:title="@string/bnav_title_home"
-        android:visible="false" />
+        android:title="@string/bnav_title_home" />
 
     <item
         android:id="@+id/bottom_nav_search"
@@ -20,8 +19,7 @@
     <item
         android:id="@+id/bottom_nav_wishlist"
         android:icon="@android:drawable/ic_btn_speak_now"
-        android:title="@string/bnav_title_wishlist"
-        android:visible="false" />
+        android:title="@string/bnav_title_wishlist" />
 
     <item
         android:id="@+id/bottom_nav_more"
