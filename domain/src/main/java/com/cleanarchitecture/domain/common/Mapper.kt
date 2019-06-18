@@ -1,10 +1,15 @@
 package com.cleanarchitecture.domain.common
 
 /**
- * An abstract class to convert an object of one type to another type
+ * An interface to convert an object of one type to another type
  * @param T - object to be converted
- * @param E - resulting object after conversion
+ * @param R - resulting object after conversion
  */
-abstract class Mapper<in T, E> {
-    abstract fun toUi(from: T): E
+interface Mapper<in T, R> {
+    fun map(from: T): R
+    /**
+     * Utilises default implementation functionality of Kotlin's interfaces to implement
+     * conversion of List of objects of type T using the map methods implementation
+     */
+    fun mapList(fromList: List<T>): List<R> = fromList.map { map(it) }
 }

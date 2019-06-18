@@ -19,5 +19,5 @@ class AlbumsRepositoryImpl(private val remote: AlbumRemoteDataStore) : AlbumsRep
      * List<DomainAlbum>> by utilising the mapper
      */
     override fun getAlbums(): Single<List<DomainAlbum>> = remote.getNews()
-            .map { albumMapper.toDomainList(it) }
+            .map { albumMapper.mapList(it) }
 }
