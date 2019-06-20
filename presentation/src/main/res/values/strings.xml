@@ -6,6 +6,13 @@
     <!-- Splash -->
     <string name="splash_title_proof_of_concept">Splash Title Proof of Concept</string>
     <string name="album_details_title">Album Details</string>
+    <string name="bnav_title_home">Home</string>
+    <string name="bnav_title_search">Search</string>
+    <string name="bnav_title_wishlist">Wishlist</string>
+    <string name="bnav_title_basket">Basket</string>
+    <string name="bnav_title_more">More</string>
+    <string name="home_activity_title">Home</string>
+    <string name="albums">Albums</string>
 
     <!-- Albums -->
 

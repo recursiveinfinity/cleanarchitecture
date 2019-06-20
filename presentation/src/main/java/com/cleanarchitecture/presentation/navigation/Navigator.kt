@@ -8,4 +8,5 @@ interface Navigator {
     fun toLaunchActivity()
     fun toAlbums()
     fun toAlbumDetails(album: UiAlbum)
+    fun toHome()
 }

@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.cleanarchitecture.presentation.splash.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name="com.cleanarchitecture.presentation.splash.SplashActivity"
+            android:theme="@style/AppTheme.Immersive" />
 
         <activity-alias
             android:name=".LaunchActivity"
@@ -28,6 +29,16 @@
                 android:name="launcherActivity"
                 android:value="true" />
         </activity-alias>
+
+        <activity
+            android:name="com.cleanarchitecture.presentation.home.HomeActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar.Grey">
+            <intent-filter>
+                <action android:name="${nav_uri}.home" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.cleanarchitecture.presentation.albums.AlbumsActivity"

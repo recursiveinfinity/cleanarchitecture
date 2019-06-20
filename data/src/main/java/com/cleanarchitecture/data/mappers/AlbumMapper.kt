@@ -2,17 +2,16 @@ package com.cleanarchitecture.data.mappers
 
 import com.cleanarchitecture.data.entities.DataAlbum
 import com.cleanarchitecture.domain.albums.DomainAlbum
+import com.cleanarchitecture.domain.common.Mapper
 
-class AlbumMapper {
-
-    fun toDomainList(list: List<DataAlbum>): List<DomainAlbum> = list.map {
-        toDomain(it)
-    }
-
-    fun toDomain(data: DataAlbum): DomainAlbum = DomainAlbum(
-            userId = data.name,
-            url = data.url,
-            description = data.description
+/**
+ * A mapper class that converts DataAlbum to DomainAlbum extends Mapper from domain layer and
+ * implements the map method to add conversion logic
+ */
+class AlbumMapper : Mapper<DataAlbum, DomainAlbum>{
+    override fun map(from: DataAlbum) = DomainAlbum(
+    userId = from.name,
+    url = from.url,
+    description = from.description
     )
-
 }

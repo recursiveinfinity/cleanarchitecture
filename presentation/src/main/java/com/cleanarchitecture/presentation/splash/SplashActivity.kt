@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
         Completable.complete().delay(3000, TimeUnit.MILLISECONDS)
                 .doOnComplete {
-                    navigator.toAlbums()
+                    navigator.toHome()
                     finish()
                 }
                 .subscribeOn(Schedulers.io())

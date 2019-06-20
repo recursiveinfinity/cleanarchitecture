@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- base set of styles that apply to all versions -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@color/white</item>
+        <item name="actionBarStyle">@style/ActionBar.NoElevation</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.ActionBar.White</item>
+    </style>
+
+    <style name="AppBaseTheme.Grey" parent="AppBaseTheme">
+        <item name="android:windowBackground">@color/activityBackground</item>
+    </style>
+
+    <style name="AppBaseTheme.NoActionBar" parent="AppBaseTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppBaseTheme.NoActionBar.Grey" parent="AppBaseTheme.Grey">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppBaseTheme.Immersive" parent="AppBaseTheme.NoActionBar" />
+
+
+    <!-- declare the theme name that's actually applied in the manifest file -->
+    <style name="AppTheme" parent="AppBaseTheme" />
+
+    <style name="AppTheme.Grey" parent="AppBaseTheme.Grey" />
+
+    <style name="AppTheme.NoActionBar" parent="AppBaseTheme.NoActionBar" />
+
+    <style name="AppTheme.NoActionBar.Grey" parent="AppBaseTheme.NoActionBar.Grey" />
+
+    <style name="AppTheme.Immersive" parent="AppBaseTheme.Immersive" />
+</resources>
