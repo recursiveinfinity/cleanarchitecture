@@ -7,6 +7,7 @@ import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
 import com.cleanarchitecture.domain.searchnavigation.GetProductsBySearchNavigationUseCase
 import com.cleanarchitecture.presentation.common.BaseViewModel
 import com.cleanarchitecture.presentation.common.UiError
+import com.cleanarchitecture.presentation.common.extensions.addTo
 
 class SearchViewModel(private val getProductsBySearchNavigationUseCase: GetProductsBySearchNavigationUseCase,
                       private val mapper: Mapper<DomainSearchNavigation, UiSearchNavigation>,
@@ -21,14 +22,13 @@ class SearchViewModel(private val getProductsBySearchNavigationUseCase: GetProdu
     var errorLiveData = MutableLiveData<UiError>()
 
     fun getProducts() {
-        val disposable = getProductsBySearchNavigationUseCase.execute()
-                .map { mapper.toUi(it) }
+        getProductsBySearchNavigationUseCase.execute()
+                .map { mapper.map(it) }
                 .subscribe({ response: UiSearchNavigation ->
                     contentLiveData.value = response
                 }, { error: Throwable ->
                     Log.d(TAG, error.message)
-                    errorLiveData.value = uiErrorMapper.toUi(error)
-                })
-        addDisposable(disposable)
+                    errorLiveData.value = uiErrorMapper.map(error)
+                }).addTo(compositeDisposable)
     }
 }
