@@ -7,8 +7,8 @@ import com.cleanarchitecture.presentation.search.UiSearchNavigation
 
 class SearchNavigationUiMapper : Mapper<DomainSearchNavigation, UiSearchNavigation>() {
     override fun toUi(from: DomainSearchNavigation) = UiSearchNavigation(
-            userId = from.userId,
-            description = from.description,
-            url = from.url
+            userId = from.banners.first().top,
+            description = from.menus.first().name,
+            url = from.facets.first().id
     )
 }
