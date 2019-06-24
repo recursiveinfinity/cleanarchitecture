@@ -7,6 +7,13 @@ import com.cleanarchitecture.presentation.albums.UiAlbum
 
 class AppNavigator(private val activity: Activity) : Navigator {
 
+
+    override fun toProducts() {
+        createIntentFromAction("products").apply {
+            activity.startActivity(this)
+        }
+    }
+
     private val baseNavigationUri by lazy { activity.getString(R.string.nav_uri) }
 
     private fun createIntentFromAction(location: String): Intent =

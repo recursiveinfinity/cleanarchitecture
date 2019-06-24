@@ -5,7 +5,7 @@ import com.cleanarchitecture.data.api.AlbumsApi
 import com.cleanarchitecture.data.datastore.AlbumRemoteDataStore
 import com.cleanarchitecture.data.repository.AlbumsRepositoryImpl
 import com.cleanarchitecture.domain.albums.AlbumsRepository
-import com.cleanarchitecture.domain.albums.GetAlbumsUseCase
+import com.cleanarchitecture.domain.albums.GetProductsUseCase
 import com.cleanarchitecture.presentation.common.AsyncSingleTransformer
 import com.cleanarchitecture.presentation.common.ErrorUiMapper
 import com.cleanarchitecture.presentation.mappers.AlbumUiMapper
@@ -23,7 +23,7 @@ val repositoryModules = module {
 }
 
 val useCaseModules = module {
-    factory(name = "getNewsUseCase") { GetAlbumsUseCase(transformer = AsyncSingleTransformer(), repositories = get()) }
+    factory(name = "getNewsUseCase") { GetProductsUseCase(transformer = AsyncSingleTransformer(), repositories = get()) }
 }
 
 val networkModules = module {

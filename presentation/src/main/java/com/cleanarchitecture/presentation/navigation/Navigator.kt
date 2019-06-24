@@ -9,4 +9,5 @@ interface Navigator {
     fun toAlbums()
     fun toAlbumDetails(album: UiAlbum)
     fun toHome()
+    fun toProducts()
 }

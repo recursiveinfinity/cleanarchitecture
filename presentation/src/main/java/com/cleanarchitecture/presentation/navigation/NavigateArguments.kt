@@ -5,4 +5,5 @@ object NavigateArguments {
     const val WEBVIEW_TITLE = "WEBVIEW_TITLE"
 
     const val ALBUM = "ALBUM"
+    const val PRODUCT = "PRODUCT"
 }

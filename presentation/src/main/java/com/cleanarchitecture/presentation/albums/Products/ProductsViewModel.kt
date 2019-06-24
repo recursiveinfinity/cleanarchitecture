@@ -1,30 +1,30 @@
-package com.cleanarchitecture.presentation.albums
+package com.cleanarchitecture.presentation.albums.Products
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.cleanarchitecture.domain.albums.DomainAlbum
-import com.cleanarchitecture.domain.albums.GetAlbumsUseCase
+import com.cleanarchitecture.domain.albums.Domainproduct
 import com.cleanarchitecture.domain.albums.GetProductsUseCase
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.presentation.common.BaseViewModel
 import com.cleanarchitecture.presentation.common.UiError
 
-class AlbumsViewModel(private val getAlbumsUseCase: GetAlbumsUseCase,
-                      private val mapper: Mapper<DomainAlbum, UiAlbum>,
-                      private val uiErrorMapper: Mapper<Throwable, UiError>) : BaseViewModel() {
+
+class ProductListViewModel (private val getProductsUseCase: GetProductsUseCase,
+                            private val mapper: Mapper<Domainproduct, UiProduct>,
+                            private val uiErrorMapper: Mapper<Throwable, UiError>) : BaseViewModel() {
 
     companion object {
-        private val TAG = "AlbumsViewModel"
+        private val TAG = "ProductListViewModel"
     }
 
     var loadingLiveData = MutableLiveData<Boolean>()
-    var contentLiveData = MutableLiveData<List<UiAlbum>>()
+    var contentLiveData = MutableLiveData<List<UiProduct>>()
     var errorLiveData = MutableLiveData<UiError>()
 
-    fun getAlbums() {
-        val disposable = getAlbumsUseCase.execute()
+    fun getProducts() {
+        val disposable = getProductsUseCase.execute()
                 .map { mapper.mapList(it) }
-                .subscribe({ response: List<UiAlbum> ->
+                .subscribe({ response: List<UiProduct> ->
                     contentLiveData.value = response
                 }, { error: Throwable ->
                     Log.d(TAG, error.message)
