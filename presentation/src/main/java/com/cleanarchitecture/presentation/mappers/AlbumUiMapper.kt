@@ -4,16 +4,12 @@ import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.albums.DomainAlbum
 import com.cleanarchitecture.presentation.albums.UiAlbum
 
-class AlbumUiMapper : Mapper<List<DomainAlbum>, List<UiAlbum>>() {
+class AlbumUiMapper : Mapper<DomainAlbum, UiAlbum> {
 
-    override fun toUi(from: List<DomainAlbum>) = from.map {
-        toUi(it)
-    }
-
-    private fun toUi(response: DomainAlbum) = UiAlbum(
-            userId = response.userId,
-            description = response.description,
-            url = response.url
+    override fun map(from: DomainAlbum) = UiAlbum(
+            userId = from.userId,
+            description = from.description,
+            url = from.url
     )
 }
 
