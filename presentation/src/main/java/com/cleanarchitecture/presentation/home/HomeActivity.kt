@@ -33,6 +33,10 @@ class HomeActivity : AppCompatActivity() {
             fragment = HomeFragment.newInstance(navigator),
             tag = HomeFragment.TAG,
             titleId = R.string.bnav_title_home)
+    private fun toProduct() = goTo(
+            fragment = HomeFragment.newInstance(navigator),
+            tag = HomeFragment.TAG,
+            titleId = "ProductList")
 
     private fun toSearch() = goTo(
             fragment = HomeFragment.newInstance(navigator),

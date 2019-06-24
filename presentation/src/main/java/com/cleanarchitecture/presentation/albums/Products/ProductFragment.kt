@@ -9,10 +9,10 @@ import android.view.ViewGroup
 
 import com.cleanarchitecture.news_sample_app.R
 
-class ProductListFragment : Fragment() {
+class ProductFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ProductListFragment()
+        fun newInstance() = ProductFragment()
     }
 
     private lateinit var viewModel: ProductListViewModel
