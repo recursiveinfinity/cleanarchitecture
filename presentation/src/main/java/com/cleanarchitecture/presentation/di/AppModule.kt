@@ -9,6 +9,8 @@ import com.cleanarchitecture.data.repository.AlbumsRepositoryImpl
 import com.cleanarchitecture.data.repository.SearchRepositoryImpl
 import com.cleanarchitecture.domain.albums.AlbumsRepository
 import com.cleanarchitecture.domain.albums.GetAlbumsUseCase
+import com.cleanarchitecture.domain.searchnavigation.GetProductsBySearchAsYouTypeUseCase
+import com.cleanarchitecture.domain.searchnavigation.GetProductsBySearchAutocompleteUseCase
 import com.cleanarchitecture.domain.searchnavigation.GetProductsBySearchNavigationUseCase
 import com.cleanarchitecture.domain.searchnavigation.SearchRepository
 import com.cleanarchitecture.presentation.albums.AlbumsViewModel
@@ -34,6 +36,8 @@ val repositoryModules = module {
 val useCaseModules = module {
     factory(name = GET_NEWS_USECASE) { GetAlbumsUseCase(transformer = AsyncSingleTransformer(), repositories = get()) }
     factory(name = GET_PRODUCTS_BY_SEARCHNAVIGATION_USECASE) { GetProductsBySearchNavigationUseCase(transformer = AsyncSingleTransformer(), repositories = get()) }
+    factory(name = GET_PRODUCTS_BY_SEARCHAUTOCOMPLETE_USECASE) { GetProductsBySearchAutocompleteUseCase(transformer = AsyncSingleTransformer(), repositories = get()) }
+    factory(name = GET_PRODUCTS_BY_SEARCHASYOUTYPE_USECASE) { GetProductsBySearchAsYouTypeUseCase(transformer = AsyncSingleTransformer(), repositories = get()) }
 }
 
 val networkModules = module {
@@ -74,4 +78,7 @@ private const val ALBUM_REMOTE_DATASTORE = "AlbumRemoteDataStore"
 private const val SEARCH_REMOTE_DATASTORE = "SearchRemoteDataStore"
 
 private const val GET_PRODUCTS_BY_SEARCHNAVIGATION_USECASE = "getProductsBySearchNavigationUseCase"
+private const val GET_PRODUCTS_BY_SEARCHAUTOCOMPLETE_USECASE = "GetProductsBySearchAutocompleteUseCase"
+private const val GET_PRODUCTS_BY_SEARCHASYOUTYPE_USECASE = "GetProductsBySearchAsYouTypeUseCase"
+
 private const val GET_NEWS_USECASE = "getNewsUseCase"
