@@ -2,6 +2,7 @@ package com.cleanarchitecture.domain.albums
 
 import com.cleanarchitecture.domain.common.SingleNoParamsUseCase
 import com.cleanarchitecture.domain.common.SingleRxTransformer
+import com.cleanarchitecture.domain.searchnavigation.DomainResults
 import io.reactivex.Single
 
 /**
@@ -10,9 +11,9 @@ import io.reactivex.Single
  * @param transformer - A SingleRxTransformer of type List<DomainAlbum>
  * @param repositories - An implementation of AlbumsRepository
  */
-class GetProductsUseCase(transformer: SingleRxTransformer<List<Domainproduct>>,
-                         private val repositories: ProductsRepository) : SingleNoParamsUseCase<List<Domainproduct>>(transformer) {
+class GetProductsUseCase(transformer: SingleRxTransformer<List<DomainResults>>,
+                         private val repositories: ProductsRepository) : SingleNoParamsUseCase<List<DomainResults>>(transformer) {
 
-    override fun create(): Single<List<Domainproduct>> =
+    override fun create(): Single<List<DomainResults>> =
             repositories.getProducts()
 }

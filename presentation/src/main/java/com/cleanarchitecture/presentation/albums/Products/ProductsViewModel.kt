@@ -2,15 +2,17 @@ package com.cleanarchitecture.presentation.albums.Products
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.cleanarchitecture.domain.albums.Domainproduct
+//import com.cleanarchitecture.domain.albums.Domainproduct
 import com.cleanarchitecture.domain.albums.GetProductsUseCase
 import com.cleanarchitecture.domain.common.Mapper
+import com.cleanarchitecture.domain.searchnavigation.DomainResults
 import com.cleanarchitecture.presentation.common.BaseViewModel
 import com.cleanarchitecture.presentation.common.UiError
+import com.cleanarchitecture.presentation.common.extensions.addTo
 
 
 class ProductListViewModel (private val getProductsUseCase: GetProductsUseCase,
-                            private val mapper: Mapper<Domainproduct, UiProduct>,
+                            private val mapper: Mapper<DomainResults, UiProduct>,
                             private val uiErrorMapper: Mapper<Throwable, UiError>) : BaseViewModel() {
 
     companion object {
@@ -22,7 +24,7 @@ class ProductListViewModel (private val getProductsUseCase: GetProductsUseCase,
     var errorLiveData = MutableLiveData<UiError>()
 
     fun getProducts() {
-        val disposable = getProductsUseCase.execute()
+       getProductsUseCase.execute()
                 .map { mapper.mapList(it) }
                 .subscribe({ response: List<UiProduct> ->
                     contentLiveData.value = response
@@ -30,6 +32,6 @@ class ProductListViewModel (private val getProductsUseCase: GetProductsUseCase,
                     Log.d(TAG, error.message)
                     errorLiveData.value = uiErrorMapper.map(error)
                 })
-        addDisposable(disposable)
+                .addTo(compositeDisposable)
     }
 }

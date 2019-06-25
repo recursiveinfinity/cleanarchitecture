@@ -1,5 +1,6 @@
 package com.cleanarchitecture.domain.albums
 
+import com.cleanarchitecture.domain.searchnavigation.DomainResults
 import io.reactivex.Single
 
 /**
@@ -7,5 +8,5 @@ import io.reactivex.Single
  * in data layer
  */
 interface ProductsRepository {
-    fun getProducts(): Single<List<Domainproduct>>
+    fun getProducts(): Single<List<DomainResults>>
 }

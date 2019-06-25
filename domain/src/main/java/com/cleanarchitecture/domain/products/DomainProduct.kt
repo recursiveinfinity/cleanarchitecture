@@ -1,10 +1,14 @@
 package com.cleanarchitecture.domain.albums
 
-data class Domainproduct(
-        val productId: String? = null,
-        val description: String? = null,
-        val url: String? = null,
-        val price: String? = null,
-        val ratings: Float? = null,
-        val reviewCount: Int? = null
+data class DomainResultsvvv(
+        val id: Int,
+        val sku: Int,
+        val title: String,
+        val brand: String,
+        val price: Double,
+        val image: String,
+        val reevoo_score: Double,
+        val reevoo_count: Int,
+        val discount: String,
+        val short_description: String
 )

@@ -4,6 +4,7 @@ import com.cleanarchitecture.data.api.AlbumsApi
 import com.cleanarchitecture.data.api.ProductsApi
 import com.cleanarchitecture.data.entities.DataAlbum
 import com.cleanarchitecture.data.entities.DataProduct
+import com.cleanarchitecture.data.entities.DataResults
 import io.reactivex.Single
 
 /**
@@ -12,7 +13,7 @@ import io.reactivex.Single
  */
 class ProductRemoteDataStore constructor(private val api: ProductsApi) : ProductDataStore {
 
-    override fun getNews(): Single<List<DataProduct>> =
+    override fun getProductList(): Single<List<DataResults>> =
             api.getNews()
 
 }

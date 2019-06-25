@@ -42,7 +42,7 @@ dependencies {
     implementation "com.google.android.material:material:$androidSupportLibVersion"
     implementation "androidx.cardview:cardview:$androidSupportLibVersion"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation rootProject.ext.rxJava
     implementation rootProject.ext.retrofit
     implementation rootProject.ext.retrofitGsonConverter

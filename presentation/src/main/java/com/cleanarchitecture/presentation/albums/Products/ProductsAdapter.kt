@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cleanarchitecture.news_sample_app.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_album.view.*
+import kotlinx.android.synthetic.main.product_list_fragment.view.*
+import kotlinx.android.synthetic.main.product_list_grid_view.view.*
 
 class ProductsAdapter(val onItemClick: (UiProduct?) -> Unit) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
@@ -28,7 +31,10 @@ class ProductsAdapter(val onItemClick: (UiProduct?) -> Unit) : RecyclerView.Adap
 
         fun bind(uiProduct: UiProduct) {
             with(itemView) {
-                tv_title.text = uiProduct.description
+                tvProductPrice.text = uiProduct.price.toString()
+                tvReviewNumbers.text = uiProduct.reevoo_count.toString()
+                Picasso.get().load(uiProduct.image).into(ivProduct)
+                tvProductDescription.text = uiProduct.short_description
                 setOnClickListener {
                     onItemClick.invoke(uiProduct)
                 }

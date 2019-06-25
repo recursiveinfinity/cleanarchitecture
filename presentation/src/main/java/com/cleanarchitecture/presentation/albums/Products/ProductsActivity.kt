@@ -54,7 +54,7 @@ class ProductsActivity : AppCompatActivity() {
     private fun initialiseView() {
         productAdapter = ProductsAdapter(onItemClick)
         rvProdcts.layoutManager = GridLayoutManager(this, 2)
-        rv_albums.adapter = productAdapter
+        rvProdcts.adapter = productAdapter
     }
 
     private fun loading(isLoading: Boolean) {

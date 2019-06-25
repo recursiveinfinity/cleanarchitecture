@@ -2,6 +2,7 @@ package com.cleanarchitecture.data.api
 
 import com.cleanarchitecture.data.entities.DataAlbum
 import com.cleanarchitecture.data.entities.DataProduct
+import com.cleanarchitecture.data.entities.DataResults
 import io.reactivex.Single
 import retrofit2.http.GET
 
@@ -11,6 +12,6 @@ import retrofit2.http.GET
 interface ProductsApi {
 
     @GET("products")
-    fun getNews(): Single<List<DataProduct>>
+    fun getNews(): Single<List<DataResults>>
 
 }
