@@ -12,6 +12,7 @@ import com.cleanarchitecture.presentation.mappers.AlbumUiMapper
 import com.cleanarchitecture.presentation.navigation.AppNavigator
 import com.cleanarchitecture.presentation.albums.AlbumsViewModel
 import com.cleanarchitecture.presentation.common.FragmentsTransactionsManager
+import com.cleanarchitecture.presentation.splash.SplashViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
@@ -34,6 +35,9 @@ val networkModules = module {
 val viewModels = module {
     viewModel {
         AlbumsViewModel(getAlbumsUseCase = get(GET_NEWS_USECASE), mapper = AlbumUiMapper(), uiErrorMapper = ErrorUiMapper())
+    }
+    viewModel {
+        SplashViewModel(uiErrorMapper = ErrorUiMapper())
     }
 }
 
