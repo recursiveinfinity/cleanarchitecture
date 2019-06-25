@@ -9,7 +9,7 @@ import retrofit2.http.GET
 /**
  * Retrofit interface to communicate with the API
  */
-interface ProductsApi {
+interface StoreApi {
 
     @GET("products")
     fun getNews(): Single<List<DataResults>>

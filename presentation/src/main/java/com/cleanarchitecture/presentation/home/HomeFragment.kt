@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bt_home_albums.setOnClickListener { navigator.toAlbums() }
+        bt_home_albums.setOnClickListener { navigator.toProducts() }
     }
 
     override fun onStart() {

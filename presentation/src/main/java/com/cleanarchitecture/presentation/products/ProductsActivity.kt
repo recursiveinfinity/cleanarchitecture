@@ -1,4 +1,4 @@
-package com.cleanarchitecture.presentation.albums.Products
+package com.cleanarchitecture.presentation.products
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -9,7 +9,8 @@ import com.cleanarchitecture.news_sample_app.R
 import com.cleanarchitecture.presentation.common.ErrorViewType
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.navigation.AppNavigator
-import kotlinx.android.synthetic.main.activity_albums.*
+import com.cleanarchitecture.presentation.search.UiResult
+import com.cleanarchitecture.presentation.search.UiSearchNavigation
 import kotlinx.android.synthetic.main.product_list_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -18,13 +19,10 @@ import org.koin.core.parameter.parametersOf
 
 class ProductsActivity : AppCompatActivity() {
 
-    private val productViewModel: ProductListViewModel by viewModel()
+    private val productViewModel: ProductsViewModel by viewModel()
     private val navigator: AppNavigator by inject { parametersOf(this) }
-    private val onItemClick: ((UiProduct?) -> Unit) = {
+    private val onItemClick: ((UiResult?) -> Unit) = {
         it?.let { product ->
-            navigator.toProducts(
-
-            )
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
     }
@@ -61,9 +59,9 @@ class ProductsActivity : AppCompatActivity() {
 
     }
 
-    private fun content(it: List<UiProduct>) {
+    private fun content(it: UiSearchNavigation) {
         it.let { response ->
-            productAdapter.updateList(response)
+            productAdapter.updateList(response.resultsets.default.results)
         }
     }
 

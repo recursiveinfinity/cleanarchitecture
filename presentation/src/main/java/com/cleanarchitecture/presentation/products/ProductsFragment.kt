@@ -1,21 +1,25 @@
-package com.cleanarchitecture.presentation.albums.Products
+package com.cleanarchitecture.presentation.products
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.cleanarchitecture.news_sample_app.R
+import com.cleanarchitecture.presentation.navigation.AppNavigator
 
-class ProductFragment : Fragment() {
+class ProductsFragment : Fragment() {
+    private lateinit var navigator: AppNavigator
 
     companion object {
-        fun newInstance() = ProductFragment()
+        const val TAG = "HomeFragment"
+        fun newInstance(navigator: AppNavigator) = ProductsFragment().apply {
+            this.navigator = navigator
+        }
     }
 
-    private lateinit var viewModel: ProductListViewModel
+    private lateinit var viewModel: ProductsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -24,7 +28,7 @@ class ProductFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ProductListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

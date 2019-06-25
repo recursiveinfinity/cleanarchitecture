@@ -9,6 +9,6 @@ import io.reactivex.Single
  * Interface for AlbumDataStore - aka Data Source
  */
 
-interface ProductDataStore {
+interface StoreDataStore {
     fun getProductList(): Single<List<DataResults>>
 }

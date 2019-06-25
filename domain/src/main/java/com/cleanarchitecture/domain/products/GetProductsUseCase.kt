@@ -12,7 +12,7 @@ import io.reactivex.Single
  * @param repositories - An implementation of AlbumsRepository
  */
 class GetProductsUseCase(transformer: SingleRxTransformer<List<DomainResults>>,
-                         private val repositories: ProductsRepository) : SingleNoParamsUseCase<List<DomainResults>>(transformer) {
+                         private val repositories: StoreRepository) : SingleNoParamsUseCase<List<DomainResults>>(transformer) {
 
     override fun create(): Single<List<DomainResults>> =
             repositories.getProducts()
