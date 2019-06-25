@@ -2,6 +2,7 @@ package com.cleanarchitecture.presentation.mappers
 
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.searchnavigation.*
+import com.cleanarchitecture.presentation.common.CurrencyFormatter
 import com.cleanarchitecture.presentation.search.*
 
 
@@ -9,108 +10,108 @@ class SearchNavigationUiMapper : Mapper<DomainSearchNavigation, UiSearchNavigati
 
     override fun map(from: DomainSearchNavigation) = toUi(from)
 
-    private fun toUi(Domain: DomainSearchNavigation): UiSearchNavigation = UiSearchNavigation(
-            general = toUiGeneral(Domain.general),
-            banners = Domain.banners.map { toUiBanners(it) },
-            menus = Domain.menus.map { toUiMenus(it) },
-            breadcrumbs = Domain.breadcrumbs,
-            pagination = toUiPagination(Domain.pagination),
-            facets = Domain.facets.map { toUiFacets(it) },
-            resultsets = toUiResultSets(Domain.resultsets),
-            resultcount = toUiResultCount(Domain.resultcount),
-            price_range = toUiPriceRange(Domain.price_range)
+    private fun toUi(from: DomainSearchNavigation): UiSearchNavigation = UiSearchNavigation(
+            general = toUiGeneral(from.general),
+            banners = from.banners.map { toUiBanners(it) },
+            menus = from.menus.map { toUiMenus(it) },
+            breadcrumbs = from.breadcrumbs,
+            pagination = toUiPagination(from.pagination),
+            facets = from.facets.map { toUiFacets(it) },
+            resultsets = toUiResultSets(from.resultsets),
+            resultcount = toUiResultCount(from.resultcount),
+            price_range = toUiPriceRange(from.price_range)
     )
 
-    private fun toUiPriceRange(Domain: DomainPriceRange): UiPriceRange = UiPriceRange(
-            max = Domain.max,
-            min = Domain.min
+    private fun toUiPriceRange(from: DomainPriceRange): UiPriceRange = UiPriceRange(
+            max = from.max,
+            min = from.min
     )
 
-    private fun toUiResultCount(Domain: DomainResultCount): UiResultCount = UiResultCount(
-            total = Domain.total,
-            pagelower = Domain.pagelower,
-            pageupper = Domain.pageupper
+    private fun toUiResultCount(from: DomainResultCount): UiResultCount = UiResultCount(
+            total = from.total,
+            pagelower = from.pagelower,
+            pageupper = from.pageupper
     )
 
-    private fun toUiResultSets(Domain: DomainResultsets): UiResultsets = UiResultsets(
-            default = toUiDefault(Domain.default)
+    private fun toUiResultSets(from: DomainResultsets): UiResultsets = UiResultsets(
+            default = toUiDefault(from.default)
     )
 
-    private fun toUiDefault(Domain: DomainDefault): UiDefault = UiDefault(
-            name = Domain.name,
-            results = Domain.results.map { toUiResults(it) }
+    private fun toUiDefault(from: DomainDefault): UiDefault = UiDefault(
+            name = from.name,
+            results = from.results.map { toUiResults(it) }
     )
 
-    private fun toUiResults(Domain: DomainResults): UiResult = UiResult(
-            id = Domain.id,
-            sku = Domain.sku,
-            title = Domain.title,
-            brand = Domain.brand,
-            price = Domain.price,
-            image = Domain.image,
-            reevoo_score = Domain.reevoo_score,
-            reevoo_count = Domain.reevoo_count,
-            discount = Domain.discount,
-            short_description = Domain.short_description
-
-    )
-
-    private fun toUiFacets(Domain: DomainFacets): UiFacets = UiFacets(
-            id = Domain.id,
-            label = Domain.label,
-            values = Domain.values.map { toUiValues(it) }
-    )
-
-    private fun toUiValues(Domain: DomainValues): UiValues = UiValues(
-            value = Domain.value,
-            label = Domain.label,
-            count = Domain.count,
-            selected = Domain.selected
-    )
-
-    private fun toUiPagination(Domain: DomainPagination): UiPagination = UiPagination(
-            name = Domain.name,
-            previous = Domain.previous,
-            current = Domain.current,
-            next = Domain.next,
-            last = Domain.last,
-            pages = Domain.pages.map { toUiPages(it) }
+    private fun toUiResults(from: DomainResults): UiResult = UiResult(
+            id = from.id,
+            sku = from.sku,
+            title = from.title,
+            brand = from.brand,
+            price = CurrencyFormatter.format(from.price),
+            image = from.image,
+            reevoo_score = from.reevoo_score,
+            reevoo_count = from.reevoo_count,
+            discount = from.discount,
+            short_description = from.short_description
 
     )
 
-    private fun toUiPages(Domain: DomainPages): UiPages = UiPages(
-            page = Domain.page,
-            selected = Domain.selected
+    private fun toUiFacets(from: DomainFacets): UiFacets = UiFacets(
+            id = from.id,
+            label = from.label,
+            values = from.values.map { toUiValues(it) }
     )
 
-    private fun toUiGeneral(Domain: DomainGeneral): UiGeneral = UiGeneral(
-            query = Domain.query,
-            tag = Domain.tag,
-            ids = Domain.ids,
-            skus = Domain.skus,
-            total = Domain.total,
-            redirect = Domain.redirect,
-            bannerTitle = Domain.bannerTitle,
-            redirect_without_analytics = Domain.redirect_without_analytics,
-            redirect_type = Domain.redirect_type,
-            page_lower = Domain.page_lower,
-            page_upper = Domain.page_upper,
-            page_total = Domain.page_total,
-            index = Domain.index
+    private fun toUiValues(from: DomainValues): UiValues = UiValues(
+            value = from.value,
+            label = from.label,
+            count = from.count,
+            selected = from.selected
     )
 
-    private fun toUiBanners(Domain: DomainBanners): UiBanners = UiBanners(Domain.top)
+    private fun toUiPagination(from: DomainPagination): UiPagination = UiPagination(
+            name = from.name,
+            previous = from.previous,
+            current = from.current,
+            next = from.next,
+            last = from.last,
+            pages = from.pages.map { toUiPages(it) }
 
-    private fun toUiMenus(Domain: DomainMenus): UiMenus = UiMenus(
-            name = Domain.name,
-            label = Domain.label,
-            type = Domain.type,
-            items = Domain.items.map { toUiItems(it) }
     )
 
-    private fun toUiItems(Domain: DomainItems): UiItems = UiItems(
-            value = Domain.value,
-            label = Domain.label,
-            selected = Domain.selected
+    private fun toUiPages(from: DomainPages): UiPages = UiPages(
+            page = from.page,
+            selected = from.selected
+    )
+
+    private fun toUiGeneral(from: DomainGeneral): UiGeneral = UiGeneral(
+            query = from.query,
+            tag = from.tag,
+            ids = from.ids,
+            skus = from.skus,
+            total = from.total,
+            redirect = from.redirect,
+            bannerTitle = from.bannerTitle,
+            redirect_without_analytics = from.redirect_without_analytics,
+            redirect_type = from.redirect_type,
+            page_lower = from.page_lower,
+            page_upper = from.page_upper,
+            page_total = from.page_total,
+            index = from.index
+    )
+
+    private fun toUiBanners(from: DomainBanners): UiBanners = UiBanners(from.top)
+
+    private fun toUiMenus(from: DomainMenus): UiMenus = UiMenus(
+            name = from.name,
+            label = from.label,
+            type = from.type,
+            items = from.items.map { toUiItems(it) }
+    )
+
+    private fun toUiItems(from: DomainItems): UiItems = UiItems(
+            value = from.value,
+            label = from.label,
+            selected = from.selected
     )
 }

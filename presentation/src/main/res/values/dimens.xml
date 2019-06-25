@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="material_design_elevation">16dp</dimen>
+    <dimen name="products_image_width">232dp</dimen>
+    <dimen name="products_image_height">217dp</dimen>
+    <dimen name="material_design_spacing_medium">8dp</dimen>
+    <dimen name="material_design_spacing_large">16dp</dimen>
+    <dimen name="products_rating_bar_height">24dp</dimen>
 </resources>

@@ -8,14 +8,13 @@
     </style>
 
 
-
-
     <style name="ThemeBaseOverlay.AppCompat.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/white</item>
     </style>
 
     <style name="ThemeOverlay.AppCompat.ActionBar.White" parent="ThemeBaseOverlay.AppCompat.ActionBar">
         <item name="colorPrimary">@color/white</item>
+        <item name="android:actionModeBackground">@color/white</item>
     </style>
 
     <style name="ThemeOverlay.AppCompat.ActionBar.Grey" parent="ThemeBaseOverlay.AppCompat.ActionBar">

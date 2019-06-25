@@ -11,7 +11,7 @@ import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.navigation.AppNavigator
 import com.cleanarchitecture.presentation.search.UiResult
 import com.cleanarchitecture.presentation.search.UiSearchNavigation
-import kotlinx.android.synthetic.main.product_list_fragment.*
+import kotlinx.android.synthetic.main.fragment_products.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -31,7 +31,7 @@ class ProductsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.product_list_fragment)
+        setContentView(R.layout.fragment_products)
         initialiseView()
     }
 

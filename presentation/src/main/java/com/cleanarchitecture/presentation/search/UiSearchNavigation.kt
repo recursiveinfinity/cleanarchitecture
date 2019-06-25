@@ -90,7 +90,7 @@ data class UiResult(
         val sku: Int,
         val title: String,
         val brand: String,
-        val price: Double,
+        val price: String,
         val image: String,
         val reevoo_score: Double,
         val reevoo_count: Int,
