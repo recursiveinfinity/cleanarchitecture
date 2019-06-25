@@ -1,7 +1,9 @@
 package com.cleanarchitecture.domain.home
 
-data class DomainPromotedItem(val title: String,
+import java.math.BigDecimal
+
+data class DomainPromotedItem(val name: String,
                               val rating: Float,
-                              val price: String,
+                              val price: BigDecimal,
                               val imageUrl: String,
                               val savings: String)
