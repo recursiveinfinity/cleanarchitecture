@@ -69,7 +69,7 @@ val fragments = module {
 }
 
 private const val BASE_URL1 = "https://jsonplaceholder.typicode.com/"
-private const val BASE_URL2 = "https://api.dcg-search.com/currys/"
+private const val BASE_URL2 = "https://api.dcg-search.com/"
 
 private const val RETROFIT_INSTANCE1 = "RETROFIT_INSTANCE1"
 private const val RETROFIT_INSTANCE2 = "RETROFIT_INSTANCE2"
