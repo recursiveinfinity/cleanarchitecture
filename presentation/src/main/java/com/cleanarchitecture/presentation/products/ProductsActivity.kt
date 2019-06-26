@@ -1,6 +1,8 @@
 package com.cleanarchitecture.presentation.products
 
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -38,25 +40,25 @@ class ProductsActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         productViewModel.getProducts()
-        productViewModel.loadingLiveData.observe(this, Observer {
+        productViewModel.getLoadingObservable().observe(this, Observer {
             loading(it)
         })
-        productViewModel.contentLiveData.observe(this, Observer {
+        productViewModel.getContentObservable().observe(this, Observer {
             content(it)
         })
-        productViewModel.errorLiveData.observe(this, Observer {
+        productViewModel.getErrorObservable().observe(this, Observer {
             error(it)
         })
     }
 
     private fun initialiseView() {
         productAdapter = ProductsAdapter(onItemClick)
-        rvProdcts.layoutManager = GridLayoutManager(this, 2)
-        rvProdcts.adapter = productAdapter
+        rv_products.layoutManager = GridLayoutManager(this, 2)
+        rv_products.adapter = productAdapter
     }
 
     private fun loading(isLoading: Boolean) {
-
+        pb_products.visibility = if (isLoading) VISIBLE else GONE
     }
 
     private fun content(it: UiSearchNavigation) {

@@ -1,7 +1,7 @@
 package com.cleanarchitecture.presentation.products
 
-//import com.cleanarchitecture.domain.albums.Domainproduct
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
@@ -20,19 +20,26 @@ class ProductsViewModel(private val getProductsBySearchNavigationUseCase: GetPro
         private val TAG = "ProductsViewModel"
     }
 
-    var loadingLiveData = MutableLiveData<Boolean>()
-    var contentLiveData = MutableLiveData<UiSearchNavigation>()
-    var errorLiveData = MutableLiveData<UiError>()
+    private var loadingLiveData = MutableLiveData<Boolean>()
+    private var contentLiveData = MutableLiveData<UiSearchNavigation>()
+    private var errorLiveData = MutableLiveData<UiError>()
 
     fun getProducts() {
+        loadingLiveData.value = true
         getProductsBySearchNavigationUseCase.execute()
                 .map { mapper.map(it) }
                 .subscribe({ response: UiSearchNavigation ->
+                    loadingLiveData.value = false
                     contentLiveData.value = response
                 }, { error: Throwable ->
                     Log.d(TAG, error.message)
+                    loadingLiveData.value = false
                     errorLiveData.value = uiErrorMapper.map(error)
                 })
                 .addTo(compositeDisposable)
     }
+
+    fun getLoadingObservable(): LiveData<Boolean> = loadingLiveData
+    fun getContentObservable(): LiveData<UiSearchNavigation> = contentLiveData
+    fun getErrorObservable(): LiveData<UiError> = errorLiveData
 }

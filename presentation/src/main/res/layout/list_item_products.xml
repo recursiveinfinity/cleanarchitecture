@@ -30,7 +30,7 @@
             android:layout_marginStart="@dimen/material_design_spacing_medium"
             android:layout_marginTop="@dimen/material_design_spacing_large"
             android:layout_marginEnd="@dimen/material_design_spacing_large"
-            android:textSize="13sp"
+            android:textSize="@dimen/text_4"
             app:layout_constraintTop_toBottomOf="@+id/ivProduct"
             tools:text="TextView" />
 
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/material_design_spacing_medium"
             android:layout_marginTop="@dimen/material_design_spacing_medium"
+            android:textSize="@dimen/text_3"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/tvProductSavePrice"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +55,9 @@
             android:layout_marginTop="@dimen/material_design_spacing_medium"
             android:layout_marginEnd="@dimen/material_design_spacing_medium"
             android:text=" Save £9000"
+            android:textSize="@dimen/text_3"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvProductPrice"
             app:layout_constraintTop_toBottomOf="@+id/tvProductDescription"
             tools:text="TextView" />

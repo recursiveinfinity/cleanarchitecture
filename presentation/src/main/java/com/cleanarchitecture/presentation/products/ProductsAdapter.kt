@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cleanarchitecture.news_sample_app.R
 import com.cleanarchitecture.presentation.search.UiResult
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.product_list_grid_view.view.*
+import kotlinx.android.synthetic.main.list_item_products.view.*
 
 class ProductsAdapter(val onItemClick: (UiResult?) -> Unit) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
@@ -18,7 +18,7 @@ class ProductsAdapter(val onItemClick: (UiResult?) -> Unit) : RecyclerView.Adapt
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            ProductViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.product_list_grid_view, parent, false))
+            ProductViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_products, parent, false))
 
     override fun getItemCount() = products.size
 
