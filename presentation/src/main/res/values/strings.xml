@@ -16,6 +16,8 @@
     <string name="cd_logo">Logo of Curry\'s PC World</string>
     <string name="PRODUCT">Product</string>
     <string name="bnav_title_products">ProductList</string>
+    <string name="products_sort">Sort</string>
+    <string name="products_filter">Filter</string>
 
     <!-- Albums -->
 

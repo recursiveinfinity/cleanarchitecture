@@ -3,16 +3,16 @@ package com.cleanarchitecture.presentation.products
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.cleanarchitecture.domain.albums.GetProductsUseCase
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
-import com.cleanarchitecture.domain.searchnavigation.GetProductsBySearchNavigationUseCase
 import com.cleanarchitecture.presentation.common.BaseViewModel
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.extensions.addTo
 import com.cleanarchitecture.presentation.search.UiSearchNavigation
 
 
-class ProductsViewModel(private val getProductsBySearchNavigationUseCase: GetProductsBySearchNavigationUseCase,
+class ProductsViewModel(private val getProductsUseCase: GetProductsUseCase,
                         private val mapper: Mapper<DomainSearchNavigation, UiSearchNavigation>,
                         private val uiErrorMapper: Mapper<Throwable, UiError>) : BaseViewModel() {
 
@@ -26,7 +26,7 @@ class ProductsViewModel(private val getProductsBySearchNavigationUseCase: GetPro
 
     fun getProducts() {
         loadingLiveData.value = true
-        getProductsBySearchNavigationUseCase.execute()
+        getProductsUseCase.execute()
                 .map { mapper.map(it) }
                 .subscribe({ response: UiSearchNavigation ->
                     loadingLiveData.value = false
