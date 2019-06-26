@@ -34,6 +34,7 @@
 
         </androidx.appcompat.widget.Toolbar>
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <View
@@ -52,5 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBarDivider" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
