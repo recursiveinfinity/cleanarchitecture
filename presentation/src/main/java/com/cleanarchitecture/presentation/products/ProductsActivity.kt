@@ -1,6 +1,8 @@
 package com.cleanarchitecture.presentation.products
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AlertDialog
@@ -10,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.cleanarchitecture.news_sample_app.R
 import com.cleanarchitecture.presentation.common.ErrorViewType
 import com.cleanarchitecture.presentation.common.UiError
+import com.cleanarchitecture.presentation.common.consume
+import com.cleanarchitecture.presentation.common.extensions.applyToolbarUp
 import com.cleanarchitecture.presentation.navigation.AppNavigator
 import com.cleanarchitecture.presentation.search.UiResult
 import com.cleanarchitecture.presentation.search.UiSearchNavigation
@@ -35,6 +39,12 @@ class ProductsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_products)
         initialiseView()
+        setupActionBar()
+    }
+
+    private fun setupActionBar() {
+        setSupportActionBar(toolbar_products)
+        supportActionBar?.applyToolbarUp()
     }
 
     override fun onStart() {
@@ -55,6 +65,25 @@ class ProductsActivity : AppCompatActivity() {
         productAdapter = ProductsAdapter(onItemClick)
         rv_products.layoutManager = GridLayoutManager(this, 2)
         rv_products.adapter = productAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.products, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.products_nav_filter -> consume { filter() }
+        R.id.products_nav_sort -> consume { sort() }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun sort() {
+
+    }
+
+    private fun filter() {
+
     }
 
     private fun loading(isLoading: Boolean) {

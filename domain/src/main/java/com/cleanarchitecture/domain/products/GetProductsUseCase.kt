@@ -17,7 +17,9 @@ class GetProductsUseCase(transformer: SingleRxTransformer<DomainSearchNavigation
                          private val storeRepository: StoreRepository) : SingleNoParamsUseCase<DomainSearchNavigation>(transformer) {
 
     override fun create(): Single<DomainSearchNavigation> =
-            storeRepository.getProducts().flatMap {
-                searchRepository.getNavigation()
+            searchRepository.getNavigation().flatMap { searchNavigation ->
+                storeRepository.getProducts().flatMap  { products ->
+                    Single.just(searchNavigation)
+                }
             }
 }

@@ -1,6 +1,5 @@
-package com.cleanarchitecture.domain.albums
+package com.cleanarchitecture.domain.products
 
-import com.cleanarchitecture.domain.searchnavigation.DomainResults
 import io.reactivex.Single
 
 /**
@@ -8,8 +7,5 @@ import io.reactivex.Single
  * in data layer
  */
 interface StoreRepository {
-    fun getProducts(): Single<List<DomainResults>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
+    fun getProducts(productId: Int): Single<DomainProducts>
 }

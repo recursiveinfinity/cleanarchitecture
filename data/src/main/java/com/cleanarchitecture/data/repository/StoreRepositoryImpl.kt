@@ -1,8 +1,10 @@
 package com.cleanarchitecture.data.repository
 
 import com.cleanarchitecture.data.datastore.StoreRemoteDataStore
-import com.cleanarchitecture.data.mappers.SearchNavigationMapper
-import com.cleanarchitecture.domain.albums.StoreRepository
+import com.cleanarchitecture.data.mappers.ProductMapper
+import com.cleanarchitecture.domain.products.DomainProducts
+import com.cleanarchitecture.domain.products.StoreRepository
+import io.reactivex.Single
 
 /**
  * Implementation of AlbumsRepository from domain layer
@@ -10,6 +12,8 @@ import com.cleanarchitecture.domain.albums.StoreRepository
  */
 class StoreRepositoryImpl(private val remote: StoreRemoteDataStore) : StoreRepository {
 
-    private val productMapper = SearchNavigationMapper()
+    private val productMapper = ProductMapper()
 
+    override fun getProducts(productId: Int): Single<DomainProducts> = remote.getProducts(productId)
+            .map { productMapper.map(it) }
 }

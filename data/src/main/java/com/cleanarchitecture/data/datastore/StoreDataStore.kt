@@ -1,8 +1,6 @@
 package com.cleanarchitecture.data.datastore
 
-import com.cleanarchitecture.data.entities.DataAlbum
-import com.cleanarchitecture.data.entities.DataProduct
-import com.cleanarchitecture.data.entities.DataResults
+import com.cleanarchitecture.data.entities.DataProducts
 import io.reactivex.Single
 
 /**
@@ -10,5 +8,5 @@ import io.reactivex.Single
  */
 
 interface StoreDataStore {
-    fun getProductList(): Single<List<DataResults>>
+    fun getProducts(productId: Int): Single<DataProducts>
 }

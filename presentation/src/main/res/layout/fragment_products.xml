@@ -29,8 +29,11 @@
             <TextView
                 android:id="@+id/tv_products_title"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/PRODUCT" />
+                android:layout_height="wrap_content"
+                android:textAlignment="gravity"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:text="@string/PRODUCT"/>
+
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -44,25 +47,30 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintTop_toBottomOf="@id/abl_products" />
 
-    <Button
-        android:id="@+id/bt_products_sort"
-        android:layout_width="182dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/products_sort"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider_products" />
+    <!--<Button-->
+        <!--android:id="@+id/bt_products_sort"-->
+        <!--android:layout_width="182dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:text="@string/products_sort"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/divider_products" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_products"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/material_design_spacing_medium"
+        android:layout_marginStart="@dimen/material_design_spacing_mediumlarge"
+        android:layout_marginEnd="@dimen/material_design_spacing_mediumlarge"
+        android:layout_marginTop="@dimen/material_design_spacing_small"
+        android:layout_marginBottom="@dimen/material_design_spacing_small"
+        tools:listitem="@layout/list_item_products"
+        tools:itemCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button">
+        app:layout_constraintTop_toBottomOf="@+id/divider_products">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -75,16 +83,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/bt_products_filter"
-        android:layout_width="158dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/products_filter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/abl_products" />
+    <!--<Button-->
+        <!--android:id="@+id/bt_products_filter"-->
+        <!--android:layout_width="158dp"-->
+        <!--android:layout_height="46dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginEnd="16dp"-->
+        <!--android:text="@string/products_filter"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/button"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/abl_products" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

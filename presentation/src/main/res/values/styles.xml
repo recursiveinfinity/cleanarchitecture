@@ -21,4 +21,10 @@
         <item name="colorPrimary">@color/grey</item>
     </style>
 
+    <style name="RatingBar">
+        <item name="android:colorControlNormal">@color/progressGrey</item>
+        <item name="android:colorControlActivated">@color/yellow</item>
+    </style>
+
+    <color name="yellow">#EE9022</color>
 </resources>
