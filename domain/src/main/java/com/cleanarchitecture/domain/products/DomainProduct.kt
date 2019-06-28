@@ -1,5 +1,37 @@
 package com.cleanarchitecture.domain.products
 
+
+data class DomainProducts(
+        var products: List<DomainProduct>? = null
+)
+
+data class DomainProduct(
+//TODO: Check for information on the Any data types
+        var id: String? = null,
+        var sku: String? = null,
+        var label: String? = null,
+        var link: String? = null,
+        var fullDescription: String? = null,
+        var brand: DomainBrand? = null,
+        var boxType: String? = null,
+        var isOnline: Boolean? = null,
+        var subProducts: Any? = null,
+        var images: List<DomainImage>? = null,
+        var mainFeatures: List<String>? = null,
+        var categorisation: DomainCategorisation? = null,
+        var externalCategorisation: DomainExternalCategorisation? = null,
+        var price: DomainPrice? = null,
+        var wasPrice: Any? = null,
+        var priceInBundle: DomainPriceInBundle? = null,
+        var preOrder: DomainPreOrder? = null,
+        var forwardOrder: DomainForwardOrder? = null,
+        var deliveryOptions: List<DomainDeliveryOption>? = null,
+        var energyEfficiency: Any? = null,
+        var icons: List<Any>? = null,
+        var badges: List<Any>? = null,
+        var customerReview: DomainCustomerReview? = null
+)
+
 data class DomainBrand(
         var id: String? = null,
         var label: String? = null
@@ -42,37 +74,6 @@ data class DomainImage(
 data class DomainMerchandiseArea(
         var id: String? = null,
         var label: String? = null
-)
-
-data class DomainProducts(
-        var payload: List<DomainPayload>? = null
-)
-
-data class DomainPayload(
-//TODO: Check for information on the Any data types
-        var id: String? = null,
-        var sku: String? = null,
-        var label: String? = null,
-        var link: String? = null,
-        var fullDescription: String? = null,
-        var brand: DomainBrand? = null,
-        var boxType: String? = null,
-        var isOnline: Boolean? = null,
-        var subProducts: Any? = null,
-        var images: List<DomainImage>? = null,
-        var mainFeatures: List<String>? = null,
-        var categorisation: DomainCategorisation? = null,
-        var externalCategorisation: DomainExternalCategorisation? = null,
-        var price: DomainPrice? = null,
-        var wasPrice: Any? = null,
-        var priceInBundle: DomainPriceInBundle? = null,
-        var preOrder: DomainPreOrder? = null,
-        var forwardOrder: DomainForwardOrder? = null,
-        var deliveryOptions: List<DomainDeliveryOption>? = null,
-        var energyEfficiency: Any? = null,
-        var icons: List<Any>? = null,
-        var badges: List<Any>? = null,
-        var customerReview: DomainCustomerReview? = null
 )
 
 data class DomainPlanningGroup(
