@@ -1,17 +1,15 @@
-package com.cleanarchitecture.data.mappers
+package com.cleanarchitecture.presentation.products
 
-import com.cleanarchitecture.data.entities.*
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.products.*
 
+class UiProductMapper : Mapper<DomainProducts, UiProducts> {
 
-class ProductMapper : Mapper<DataProducts, DomainProducts> {
-
-    override fun map(from: DataProducts): DomainProducts = DomainProducts(
-            products = from.payload?.map { toProduct(it) }
+    override fun map(from: DomainProducts): UiProducts = UiProducts(
+            products = from.products?.map { toProduct(it) }
     )
 
-    private fun toProduct(product: DataProduct): DomainProduct = DomainProduct(
+    fun toProduct(product: DomainProduct): UiProduct = UiProduct(
             id = product.id,
             sku = product.sku,
             label = product.label,
@@ -37,7 +35,7 @@ class ProductMapper : Mapper<DataProducts, DomainProducts> {
             customerReview = toCustomerReview(product.customerReview)
     )
 
-    private fun toWasPrice(wasPrice: DataWasPrice?): DomainWasPrice? = DomainWasPrice(
+    private fun toWasPrice(wasPrice: DomainWasPrice?): UiWasPrice? = UiWasPrice(
             amount = wasPrice?.amount,
             vatAmount = wasPrice?.vatAmount,
             currencyCode = wasPrice?.currencyCode,
@@ -46,79 +44,75 @@ class ProductMapper : Mapper<DataProducts, DomainProducts> {
             discountAmount = wasPrice?.discountAmount
     )
 
-
-    private fun toCustomerReview(customerReview: DataCustomerReview?): DomainCustomerReview? = DomainCustomerReview(
+    private fun toCustomerReview(customerReview: DomainCustomerReview?): UiCustomerReview? = UiCustomerReview(
             number = customerReview?.number,
             averageScore = customerReview?.averageScore
     )
 
-    private fun toDeliveryOptions(deliveryOption: DataDeliveryOption): DomainDeliveryOption = DomainDeliveryOption(
+    private fun toDeliveryOptions(deliveryOption: DomainDeliveryOption): UiDeliveryOption = UiDeliveryOption(
             id = deliveryOption.id,
             label = deliveryOption.label,
             enabled = deliveryOption.enabled
     )
 
-    private fun toForwardOrder(forwardOrder: DataForwardOrder?): DomainForwardOrder? = DomainForwardOrder(
+    private fun toForwardOrder(forwardOrder: DomainForwardOrder?): UiForwardOrder? = UiForwardOrder(
             available = forwardOrder?.available,
             message = forwardOrder?.message
     )
 
-    private fun toPreOrder(preOrder: DataPreOrder?): DomainPreOrder? = DomainPreOrder(
+    private fun toPreOrder(preOrder: DomainPreOrder?): UiPreOrder? = UiPreOrder(
             available = preOrder?.available,
             message = preOrder?.message
     )
 
-    private fun toPriceInBundle(priceInBundle: DataPriceInBundle?): DomainPriceInBundle? = DomainPriceInBundle(
+    private fun toPriceInBundle(priceInBundle: DomainPriceInBundle?): UiPriceInBundle? = UiPriceInBundle(
             amount = priceInBundle?.amount,
             vatAmount = priceInBundle?.vatAmount,
             currencyCode = priceInBundle?.currencyCode
     )
 
-    private fun toPrice(price: DataPrice?): DomainPrice? = DomainPrice(
+    private fun toPrice(price: DomainPrice?): UiPrice? = UiPrice(
             amount = price?.amount,
             vatAmount = price?.vatAmount,
             currencyCode = price?.currencyCode,
             discountAmount = price?.discountAmount
     )
 
-    private fun toExternalCategorisation(externalCategorisation: DataExternalCategorisation?): DomainExternalCategorisation? = DomainExternalCategorisation(
+    private fun toExternalCategorisation(externalCategorisation: DomainExternalCategorisation?): UiExternalCategorisation? = UiExternalCategorisation(
             planningGroup = toPlanningGroup(externalCategorisation?.planningGroup),
             subPlanningGroup = toSubPlanningGroup(externalCategorisation?.subPlanningGroup),
             merchandiseArea = toMerchandiseArea(externalCategorisation?.merchandiseArea)
     )
 
-    private fun toMerchandiseArea(merchandiseArea: DataMerchandiseArea?): DomainMerchandiseArea? = DomainMerchandiseArea(
+    private fun toMerchandiseArea(merchandiseArea: DomainMerchandiseArea?): UiMerchandiseArea? = UiMerchandiseArea(
             id = merchandiseArea?.id,
             label = merchandiseArea?.label
     )
 
-    private fun toSubPlanningGroup(subPlanningGroup: DataSubPlanningGroup?): DomainSubPlanningGroup? = DomainSubPlanningGroup(
+    private fun toSubPlanningGroup(subPlanningGroup: DomainSubPlanningGroup?): UiSubPlanningGroup? = UiSubPlanningGroup(
             id = subPlanningGroup?.id,
             label = subPlanningGroup?.label
     )
 
-    private fun toPlanningGroup(planningGroup: DataPlanningGroup?): DomainPlanningGroup? = DomainPlanningGroup(
+    private fun toPlanningGroup(planningGroup: DomainPlanningGroup?): UiPlanningGroup? = UiPlanningGroup(
             id = planningGroup?.id,
             label = planningGroup?.label
     )
 
-    private fun toCategorisation(categorisation: DataCategorisation?): DomainCategorisation? = DomainCategorisation(
+    private fun toCategorisation(categorisation: DomainCategorisation?): UiCategorisation? = UiCategorisation(
             universeId = categorisation?.universeId,
             categoryId = categorisation?.categoryId,
             marketId = categorisation?.marketId,
             segmentId = categorisation?.segmentId
     )
 
-    private fun toImages(image: DataImage): DomainImage = DomainImage(
+    private fun toImages(image: DomainImage): UiImage = UiImage(
             url = image.url,
             urlSizeMedium = image.urlSizeMedium
     )
 
-    private fun toBrand(brand: DataBrand?): DomainBrand? = DomainBrand(
+    private fun toBrand(brand: DomainBrand?): UiBrand? = UiBrand(
             id = brand?.id,
             label = brand?.label
     )
 }
-
-
-

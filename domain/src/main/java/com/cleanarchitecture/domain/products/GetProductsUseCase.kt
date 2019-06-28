@@ -2,6 +2,7 @@ package com.cleanarchitecture.domain.albums
 
 import com.cleanarchitecture.domain.common.SingleNoParamsUseCase
 import com.cleanarchitecture.domain.common.SingleRxTransformer
+import com.cleanarchitecture.domain.products.DomainProductListing
 import com.cleanarchitecture.domain.products.StoreRepository
 import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
 import com.cleanarchitecture.domain.searchnavigation.SearchRepository
@@ -13,14 +14,33 @@ import io.reactivex.Single
  * @param transformer - A SingleRxTransformer of type List<DomainAlbum>
  * @param repositories - An implementation of AlbumsRepository
  */
-class GetProductsUseCase(transformer: SingleRxTransformer<DomainSearchNavigation>,
+class GetProductsUseCase(transformer: SingleRxTransformer<DomainProductListing>,
                          private val searchRepository: SearchRepository,
-                         private val storeRepository: StoreRepository) : SingleNoParamsUseCase<DomainSearchNavigation>(transformer) {
+                         private val storeRepository: StoreRepository) : SingleNoParamsUseCase<DomainProductListing>(transformer) {
 
-    override fun create(): Single<DomainSearchNavigation> =
-            searchRepository.getNavigation().flatMap { searchNavigation ->
-                storeRepository.getProducts(10185460).flatMap  { products ->
-                    Single.just(searchNavigation)
-                }
-            }
+    override fun create(): Single<DomainProductListing> =
+            searchRepository.getNavigation()
+                    .flatMap { searchNavigation ->
+                        getProductIds(searchNavigation)
+                                .flatMap {  productIds ->
+                                    storeRepository.getProducts(productIds)
+                                }
+                                .map { products ->
+                                    DomainProductListing(searchNavigation, products)
+                                }
+                    }
+
+    private fun getProductIds(searchNavigation: DomainSearchNavigation): Single<List<Int>> =
+            Single.just(searchNavigation)
+                    .toObservable()
+                    .flatMapIterable { it.resultsets.default.results }
+                    .map { it.id }
+                    .toList()
 }
+
+
+//flatMap { searchNavigation ->
+//                storeRepository.getProducts(10185460).flatMap  { products ->
+//                    Single.just(searchNavigation)
+//                }
+//            }

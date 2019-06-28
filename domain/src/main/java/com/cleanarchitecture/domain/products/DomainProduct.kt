@@ -1,5 +1,12 @@
 package com.cleanarchitecture.domain.products
 
+import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
+
+data class DomainProductListing(
+        val searchNavigation: DomainSearchNavigation,
+        val storeProducts: DomainProducts
+)
+
 
 data class DomainProducts(
         var products: List<DomainProduct>? = null
@@ -21,7 +28,7 @@ data class DomainProduct(
         var categorisation: DomainCategorisation? = null,
         var externalCategorisation: DomainExternalCategorisation? = null,
         var price: DomainPrice? = null,
-        var wasPrice: Any? = null,
+        var wasPrice: DomainWasPrice? = null,
         var priceInBundle: DomainPriceInBundle? = null,
         var preOrder: DomainPreOrder? = null,
         var forwardOrder: DomainForwardOrder? = null,

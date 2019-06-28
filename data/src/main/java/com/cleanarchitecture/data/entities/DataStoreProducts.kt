@@ -38,7 +38,7 @@ data class DataProduct(
         @SerializedName("price")
         var price: DataPrice? = null,
         @SerializedName("wasPrice")
-        var wasPrice: Any? = null,
+        var wasPrice: DataWasPrice? = null,
         @SerializedName("priceInBundle")
         var priceInBundle: DataPriceInBundle? = null,
         @SerializedName("preOrder")

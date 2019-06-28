@@ -32,9 +32,9 @@ class ProductsFragment : Fragment() {
     private val onItemClick: ((UiResult?) -> Unit) = {
         it?.let { product ->
 
-
         }
     }
+
     private lateinit var productAdapter: ProductsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

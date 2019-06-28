@@ -12,6 +12,9 @@ import io.reactivex.Single
  */
 class StoreRepositoryImpl(private val remote: StoreRemoteDataStore) : StoreRepository {
 
+    override fun getProducts(productId: List<Int>): Single<DomainProducts> = remote.getProducts(productId)
+            .map { productMapper.map(it) }
+
     private val productMapper = ProductMapper()
 
     override fun getProducts(productId: Int): Single<DomainProducts> = remote.getProducts(productId)

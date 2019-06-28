@@ -13,5 +13,7 @@ interface StoreApi {
     @GET("store/api/products/{productId}")
     fun getProducts(@Path("productId") productId: Int): Single<DataProducts>
 
+    @GET("store/api/products/{productIds}")
+    fun getProducts(@Path("productIds") productIds: List<Int>): Single<DataProducts>
 }
 

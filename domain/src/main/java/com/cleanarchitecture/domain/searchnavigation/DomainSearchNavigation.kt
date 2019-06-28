@@ -18,7 +18,7 @@ data class DomainBanners(
 
 data class DomainDefault(
         val name: String,
-        val results: List<DomainResults>
+        val results: List<DomainResult>
 )
 
 data class DomainFacets(
@@ -81,7 +81,7 @@ data class DomainResultCount(
         val pageupper: Int
 )
 
-data class DomainResults(
+data class DomainResult(
         val id: Int,
         val sku: Int,
         val title: String,

@@ -23,9 +23,11 @@ import com.cleanarchitecture.presentation.common.AsyncSingleTransformer
 import com.cleanarchitecture.presentation.common.ErrorUiMapper
 import com.cleanarchitecture.presentation.common.FragmentsTransactionsManager
 import com.cleanarchitecture.presentation.mappers.AlbumUiMapper
+import com.cleanarchitecture.presentation.mappers.ProductListingMapper
 import com.cleanarchitecture.presentation.mappers.SearchNavigationUiMapper
 import com.cleanarchitecture.presentation.navigation.AppNavigator
 import com.cleanarchitecture.presentation.products.ProductsViewModel
+import com.cleanarchitecture.presentation.products.UiProductMapper
 import com.cleanarchitecture.presentation.search.SearchViewModel
 import com.cleanarchitecture.presentation.splash.SplashViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
@@ -73,7 +75,7 @@ val viewModels = module {
         SearchViewModel(getProductsBySearchNavigationUseCase = get(GET_PRODUCTS_BY_SEARCHNAVIGATION_USECASE), mapper = SearchNavigationUiMapper(), uiErrorMapper = ErrorUiMapper())
     }
     viewModel {
-        ProductsViewModel(getProductsUseCase = get(), mapper = SearchNavigationUiMapper(), uiErrorMapper = ErrorUiMapper())
+        ProductsViewModel(getProductsUseCase = get(), mapper = ProductListingMapper(UiProductMapper(), SearchNavigationUiMapper()), uiErrorMapper = ErrorUiMapper())
     }
 }
 

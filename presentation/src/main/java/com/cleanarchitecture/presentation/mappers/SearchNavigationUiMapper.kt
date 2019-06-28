@@ -39,10 +39,10 @@ class SearchNavigationUiMapper : Mapper<DomainSearchNavigation, UiSearchNavigati
 
     private fun toUiDefault(from: DomainDefault): UiDefault = UiDefault(
             name = from.name,
-            results = from.results.map { toUiResults(it) }
+            results = from.results.map { toUiResult(it) }
     )
 
-    private fun toUiResults(from: DomainResults): UiResult = UiResult(
+    fun toUiResult(from: DomainResult): UiResult = UiResult(
             id = from.id,
             sku = from.sku,
             title = from.title,

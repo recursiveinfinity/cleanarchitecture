@@ -5,15 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cleanarchitecture.domain.albums.GetProductsUseCase
 import com.cleanarchitecture.domain.common.Mapper
-import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
 import com.cleanarchitecture.presentation.common.BaseViewModel
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.extensions.addTo
-import com.cleanarchitecture.presentation.search.UiSearchNavigation
+import com.cleanarchitecture.presentation.mappers.ProductListingMapper
 
 
 class ProductsViewModel(private val getProductsUseCase: GetProductsUseCase,
-                        private val mapper: Mapper<DomainSearchNavigation, UiSearchNavigation>,
+                        private val mapper: ProductListingMapper,
                         private val uiErrorMapper: Mapper<Throwable, UiError>) : BaseViewModel() {
 
     companion object {
@@ -21,14 +20,14 @@ class ProductsViewModel(private val getProductsUseCase: GetProductsUseCase,
     }
 
     private var loadingLiveData = MutableLiveData<Boolean>()
-    private var contentLiveData = MutableLiveData<UiSearchNavigation>()
+    private var contentLiveData = MutableLiveData<UiProductListing>()
     private var errorLiveData = MutableLiveData<UiError>()
 
     fun getProducts() {
         loadingLiveData.value = true
         getProductsUseCase.execute()
                 .map { mapper.map(it) }
-                .subscribe({ response: UiSearchNavigation ->
+                .subscribe({ response: UiProductListing ->
                     loadingLiveData.value = false
                     contentLiveData.value = response
                 }, { error: Throwable ->
@@ -40,6 +39,6 @@ class ProductsViewModel(private val getProductsUseCase: GetProductsUseCase,
     }
 
     fun getLoadingObservable(): LiveData<Boolean> = loadingLiveData
-    fun getContentObservable(): LiveData<UiSearchNavigation> = contentLiveData
+    fun getContentObservable(): LiveData<UiProductListing> = contentLiveData
     fun getErrorObservable(): LiveData<UiError> = errorLiveData
 }

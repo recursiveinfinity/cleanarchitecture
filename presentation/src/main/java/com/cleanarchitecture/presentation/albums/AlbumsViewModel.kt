@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.cleanarchitecture.domain.albums.DomainAlbum
 import com.cleanarchitecture.domain.albums.GetAlbumsUseCase
-import com.cleanarchitecture.domain.albums.GetProductsUseCase
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.presentation.common.BaseViewModel
 import com.cleanarchitecture.presentation.common.UiError
