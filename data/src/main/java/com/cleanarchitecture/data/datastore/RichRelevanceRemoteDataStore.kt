@@ -8,20 +8,19 @@ import io.reactivex.Single
 
 class RichRelevanceRemoteDataStore : RichRelevanceDataStore {
 
-    override fun getPromotedProducts(): Single<PlacementResponseInfo> {
-        val placement = Placement(Placement.PlacementType.ADD_TO_CART, "prod1")
-        return Single.create { emitter ->
-            RichRelevance.buildRecommendationsForPlacements(placement)
-                    .setCallback(object : Callback<PlacementResponseInfo> {
-                        override fun onError(error: com.richrelevance.Error) {
-                            emitter.onError(Exception(error.message))
-                        }
+    override fun getPromotedProducts(): Single<PlacementResponseInfo> =
+            Placement(Placement.PlacementType.HOME, "centre_bottom1").let {
+                Single.create { emitter ->
+                    RichRelevance.buildRecommendationsForPlacements(it)
+                            .setCallback(object : Callback<PlacementResponseInfo> {
+                                override fun onError(error: com.richrelevance.Error) {
+                                    emitter.onError(Exception(error.message))
+                                }
 
-                        override fun onResult(result: PlacementResponseInfo) {
-                            emitter.onSuccess(result)
-                        }
-                    })
-                    .execute()
-        }
-    }
+                                override fun onResult(result: PlacementResponseInfo) {
+                                    emitter.onSuccess(result)
+                                }
+                            }).execute()
+                }
+            }
 }
