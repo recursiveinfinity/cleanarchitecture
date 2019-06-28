@@ -1,15 +1,26 @@
 package com.cleanarchitecture.presentation.products
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import com.cleanarchitecture.news_sample_app.R
+import com.cleanarchitecture.presentation.common.ErrorViewType
+import com.cleanarchitecture.presentation.common.UiError
+import com.cleanarchitecture.presentation.common.consume
+import com.cleanarchitecture.presentation.common.extensions.inflate
 import com.cleanarchitecture.presentation.navigation.AppNavigator
+import com.cleanarchitecture.presentation.search.UiResult
+import com.cleanarchitecture.presentation.search.UiSearchNavigation
+import kotlinx.android.synthetic.main.fragment_products.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProductsFragment : Fragment() {
+
     private lateinit var navigator: AppNavigator
+    private val productViewModel: ProductsViewModel by viewModel()
 
     companion object {
         const val TAG = "HomeFragment"
@@ -18,9 +29,93 @@ class ProductsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_products, container, false)
+    private val onItemClick: ((UiResult?) -> Unit) = {
+        it?.let { product ->
+
+
+        }
+    }
+    private lateinit var productAdapter: ProductsAdapter
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):
+            View? = container?.inflate(R.layout.fragment_products)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initialiseView()
+
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        productViewModel.getLoadingObservable().observe(this, Observer {
+            loading(it)
+        })
+        productViewModel.getContentObservable().observe(this, Observer {
+            content(it)
+        })
+        productViewModel.getErrorObservable().observe(this, Observer {
+            error(it)
+        })
+        productViewModel.getProducts()
+    }
+
+
+    private fun initialiseView() {
+        productAdapter = ProductsAdapter(onItemClick)
+        rv_products.layoutManager = GridLayoutManager(this.context, 2)
+        rv_products.adapter = productAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.products, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.products_nav_filter -> consume { filter() }
+        R.id.products_nav_sort -> consume { sort() }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun sort() {
+
+    }
+
+    private fun filter() {
+
+    }
+
+    private fun loading(isLoading: Boolean) {
+        pb_products.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun content(it: UiSearchNavigation) {
+        it.let { response ->
+            productAdapter.updateList(response.resultsets.default.results)
+        }
+    }
+
+    private fun error(error: UiError) {
+        activity?.let {
+            when (error.errorViewType) {
+                ErrorViewType.DIALOG -> {
+                    AlertDialog.Builder(it)
+                            .setTitle(error.title)
+                            .setMessage(error.message)
+                            .setPositiveButton(error.positive) { dialog, _ ->
+                                dialog.dismiss()
+                                productViewModel.getProducts()
+                            }
+                            .setCancelable(error.cancelable)
+                            .show()
+                }
+                else -> {
+                    // NOOP
+                }
+            }
+        }
+
+    }
 }

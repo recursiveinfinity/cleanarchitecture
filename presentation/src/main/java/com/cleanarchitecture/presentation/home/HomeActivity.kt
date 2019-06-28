@@ -66,7 +66,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setToolbar(titleId: Int) {
-        tv_products_title.apply {
+        tv_home_title.apply {
             text = getString(titleId)
         }
     }

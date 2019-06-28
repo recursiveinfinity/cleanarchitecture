@@ -2,6 +2,7 @@ package com.cleanarchitecture.domain.albums
 
 import com.cleanarchitecture.domain.common.SingleNoParamsUseCase
 import com.cleanarchitecture.domain.common.SingleRxTransformer
+import com.cleanarchitecture.domain.products.StoreRepository
 import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
 import com.cleanarchitecture.domain.searchnavigation.SearchRepository
 import io.reactivex.Single
@@ -18,7 +19,7 @@ class GetProductsUseCase(transformer: SingleRxTransformer<DomainSearchNavigation
 
     override fun create(): Single<DomainSearchNavigation> =
             searchRepository.getNavigation().flatMap { searchNavigation ->
-                storeRepository.getProducts().flatMap  { products ->
+                storeRepository.getProducts(10185460).flatMap  { products ->
                     Single.just(searchNavigation)
                 }
             }

@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cleanarchitecture.news_sample_app.R
 import com.cleanarchitecture.presentation.common.ErrorViewType
+import com.cleanarchitecture.presentation.common.FragmentsTransactionsManager
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.consume
 import com.cleanarchitecture.presentation.common.extensions.applyToolbarUp
@@ -27,6 +28,8 @@ class ProductsActivity : AppCompatActivity() {
 
     private val productViewModel: ProductsViewModel by viewModel()
     private val navigator: AppNavigator by inject { parametersOf(this) }
+    private val ftm: FragmentsTransactionsManager by inject { parametersOf(this) }
+
     private val onItemClick: ((UiResult?) -> Unit) = {
         it?.let { product ->
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -37,15 +40,36 @@ class ProductsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_products)
+        setContentView(R.layout.activity_products)
         initialiseView()
         setupActionBar()
+        toProducts()
     }
+
+    private fun toProducts() = goTo(
+            fragment = ProductsFragment.newInstance(navigator),
+            tag = ProductsFragment.TAG,
+            titleId = R.string.product)
+
+    private fun goTo(fragment: ProductsFragment, tag: String, titleId: Int) {
+        setToolbar(titleId)
+        ftm.addFragment(fragment, tag, R.id.fl_products)
+    }
+
+    private fun setToolbar(titleId: Int) {
+        tv_home_title.apply {
+            text = getString(titleId)
+        }
+    }
+
+
+
 
     private fun setupActionBar() {
         setSupportActionBar(toolbar_products)
         supportActionBar?.applyToolbarUp()
     }
+
 
     override fun onStart() {
         super.onStart()
