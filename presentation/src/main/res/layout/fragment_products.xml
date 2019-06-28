@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_products"
     android:layout_width="match_parent"
@@ -8,7 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_products"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="@dimen/material_design_spacing_mediumlarge"
         android:layout_marginTop="@dimen/material_design_spacing_small"
         android:layout_marginEnd="@dimen/material_design_spacing_mediumlarge"
@@ -88,4 +88,4 @@
     <!--app:layout_constraintStart_toEndOf="@+id/button"-->
     <!--app:layout_constraintTop_toBottomOf="@+id/abl_products" />-->
 
-</merge>
+</FrameLayout>

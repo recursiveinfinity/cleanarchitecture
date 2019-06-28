@@ -37,6 +37,11 @@ class ProductsFragment : Fragment() {
     }
     private lateinit var productAdapter: ProductsAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):
             View? = container?.inflate(R.layout.fragment_products)
 
@@ -59,6 +64,8 @@ class ProductsFragment : Fragment() {
             error(it)
         })
         productViewModel.getProducts()
+
+
     }
 
 

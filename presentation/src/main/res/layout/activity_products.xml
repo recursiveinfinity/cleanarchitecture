@@ -16,7 +16,7 @@
         <FrameLayout
             android:id="@+id/fl_products"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <com.google.android.material.appbar.AppBarLayout
@@ -33,16 +33,9 @@
 
                 <TextView
                     android:id="@+id/tv_products_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/home_activity_title" />
-
-                <TextView
-                    android:id="@+id/tv_home_title"
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/product"
                     android:textAlignment="gravity" />
 
             </androidx.appcompat.widget.Toolbar>
