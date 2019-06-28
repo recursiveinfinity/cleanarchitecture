@@ -9,5 +9,5 @@ import io.reactivex.Single
 
 interface StoreDataStore {
     fun getProducts(productId: Int): Single<DataProducts>
-    fun getProducts(productIds: List<Int>): Single<DataProducts>
+    fun getProducts(productIds: String): Single<DataProducts>
 }

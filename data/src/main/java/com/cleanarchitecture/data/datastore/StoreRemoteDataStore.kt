@@ -13,7 +13,7 @@ class StoreRemoteDataStore constructor(private val api: StoreApi) : StoreDataSto
     override fun getProducts(productId: Int): Single<DataProducts> =
             api.getProducts(productId)
 
-    override fun getProducts(productIds: List<Int>): Single<DataProducts> = api.getProducts(productIds)
+    override fun getProducts(productIds: String): Single<DataProducts> = api.getProducts(productIds)
 
 
 }
