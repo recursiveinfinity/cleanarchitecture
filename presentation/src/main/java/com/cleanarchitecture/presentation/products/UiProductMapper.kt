@@ -9,33 +9,33 @@ class UiProductMapper : Mapper<DomainProducts, UiProducts> {
             products = from.products?.map { toProduct(it) }
     )
 
-    fun toProduct(product: DomainProduct): UiProduct = UiProduct(
-            id = product.id,
-            sku = product.sku,
-            label = product.label,
-            link = product.link,
-            fullDescription = product.fullDescription,
-            brand = toBrand(product.brand),
-            boxType = product.boxType,
-            isOnline = product.isOnline,
-            subProducts = product.subProducts,
-            images = product.images?.map { toImages(it) },
-            mainFeatures = product.mainFeatures,
-            categorisation = toCategorisation(product.categorisation),
-            externalCategorisation = toExternalCategorisation(product.externalCategorisation),
-            price = toPrice(product.price),
-            wasPrice = toWasPrice(product.wasPrice),
-            priceInBundle = toPriceInBundle(product.priceInBundle),
-            preOrder = toPreOrder(product.preOrder),
-            forwardOrder = toForwardOrder(product.forwardOrder),
-            deliveryOptions = product.deliveryOptions?.map { toDeliveryOptions(it) },
-            energyEfficiency = product.energyEfficiency,
-            icons = product.icons,
-            badges = product.badges,
-            customerReview = toCustomerReview(product.customerReview)
+    fun toProduct(product: DomainProduct?): UiProduct = UiProduct(
+            id = product?.id,
+            sku = product?.sku,
+            label = product?.label,
+            link = product?.link,
+            fullDescription = product?.fullDescription,
+            brand = toBrand(product?.brand),
+            boxType = product?.boxType,
+            isOnline = product?.isOnline,
+            subProducts = product?.subProducts,
+            images = product?.images?.map { toImages(it) },
+            mainFeatures = product?.mainFeatures,
+            categorisation = toCategorisation(product?.categorisation),
+            externalCategorisation = toExternalCategorisation(product?.externalCategorisation),
+            price = toPrice(product?.price),
+            wasPrice = toWasPrice(product?.wasPrice),
+            priceInBundle = toPriceInBundle(product?.priceInBundle),
+            preOrder = toPreOrder(product?.preOrder),
+            forwardOrder = toForwardOrder(product?.forwardOrder),
+            deliveryOptions = product?.deliveryOptions?.map { toDeliveryOptions(it) },
+            energyEfficiency = product?.energyEfficiency,
+            icons = product?.icons,
+            badges = product?.badges,
+            customerReview = toCustomerReview(product?.customerReview)
     )
 
-    private fun toWasPrice(wasPrice: DomainWasPrice?): UiWasPrice? = UiWasPrice(
+    fun toWasPrice(wasPrice: DomainWasPrice?): UiWasPrice? = UiWasPrice(
             amount = wasPrice?.amount,
             vatAmount = wasPrice?.vatAmount,
             currencyCode = wasPrice?.currencyCode,
@@ -49,7 +49,7 @@ class UiProductMapper : Mapper<DomainProducts, UiProducts> {
             averageScore = customerReview?.averageScore
     )
 
-    private fun toDeliveryOptions(deliveryOption: DomainDeliveryOption): UiDeliveryOption = UiDeliveryOption(
+    fun toDeliveryOptions(deliveryOption: DomainDeliveryOption): UiDeliveryOption = UiDeliveryOption(
             id = deliveryOption.id,
             label = deliveryOption.label,
             enabled = deliveryOption.enabled

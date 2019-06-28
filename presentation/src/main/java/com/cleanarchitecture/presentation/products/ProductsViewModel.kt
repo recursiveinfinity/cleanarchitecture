@@ -3,8 +3,8 @@ package com.cleanarchitecture.presentation.products
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.cleanarchitecture.domain.albums.GetProductsUseCase
 import com.cleanarchitecture.domain.common.Mapper
+import com.cleanarchitecture.domain.products.GetProductsUseCase
 import com.cleanarchitecture.presentation.common.BaseViewModel
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.extensions.addTo
