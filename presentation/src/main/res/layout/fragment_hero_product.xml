@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/hero_image_height"
         android:src="@drawable/hero_placeholder"
         android:scaleType="centerCrop"
         />

@@ -9,7 +9,7 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/coordinatorLayout_height"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -29,7 +29,7 @@
                 android:id="@+id/toolbar_home"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:contentInsetStartWithNavigation="0dp">
+                app:contentInsetStartWithNavigation="@dimen/toolbar_content">
 
                 <TextView
                     android:id="@+id/toolbar_title"
@@ -45,7 +45,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/bottom_navigation_width"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:elevation="@dimen/material_design_elevation"
