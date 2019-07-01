@@ -34,7 +34,7 @@ class ProductListingMapper(private val uiProductMapper: UiProductMapper, private
             mutableListOf<UiProductListing>().also { list ->
                 domainProductListing.searchNavigation.resultsets.default.results.forEach { result ->
                     list.add(UiProductListing(
-                            product = uiProductMapper.toProduct(domainProductListing.storeProducts.products?.firstOrNull { it.id == result.id.toString() }),
+                            product = uiProductMapper.toProduct(domainProductListing.storeProducts.products?.firstOrNull { it.id == result.id }),
                             result = searchNavigationUiMapper.toUiResult(result)
 
                     ))

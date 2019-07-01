@@ -28,7 +28,7 @@ class GetProductsUseCase(transformer: SingleRxTransformer<DomainProductListing>,
                                 }
                     }
 
-    private fun getProductIds(searchNavigation: DomainSearchNavigation): Single<List<Int>> =
+    private fun getProductIds(searchNavigation: DomainSearchNavigation): Single<List<String>> =
             Single.just(searchNavigation)
                     .toObservable()
                     .flatMapIterable { it.resultsets.default.results }

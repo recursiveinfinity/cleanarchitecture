@@ -38,7 +38,7 @@ class SearchNavigationMapper {
     )
 
     private fun toDomainResults(data: DataResults): DomainResult = DomainResult(
-            id = data.id.toIntOrZero(),
+            id = data.id,
             sku = data.sku.toIntOrZero(),
             title = data.title,
             brand = data.brand,

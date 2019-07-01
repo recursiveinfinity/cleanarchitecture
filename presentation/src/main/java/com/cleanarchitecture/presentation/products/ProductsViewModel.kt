@@ -20,14 +20,14 @@ class ProductsViewModel(private val getProductsUseCase: GetProductsUseCase,
     }
 
     private var loadingLiveData = MutableLiveData<Boolean>()
-    private var contentLiveData = MutableLiveData<UiProductListing>()
+    private var contentLiveData = MutableLiveData<List<UiProductListing>>()
     private var errorLiveData = MutableLiveData<UiError>()
 
     fun getProducts() {
         loadingLiveData.value = true
         getProductsUseCase.execute()
                 .map { mapper.map(it) }
-                .subscribe({ response: UiProductListing ->
+                .subscribe({ response: List<UiProductListing> ->
                     loadingLiveData.value = false
                     contentLiveData.value = response
                 }, { error: Throwable ->
@@ -39,6 +39,6 @@ class ProductsViewModel(private val getProductsUseCase: GetProductsUseCase,
     }
 
     fun getLoadingObservable(): LiveData<Boolean> = loadingLiveData
-    fun getContentObservable(): LiveData<UiProductListing> = contentLiveData
+    fun getContentObservable(): LiveData<List<UiProductListing>> = contentLiveData
     fun getErrorObservable(): LiveData<UiError> = errorLiveData
 }
