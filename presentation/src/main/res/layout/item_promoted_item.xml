@@ -38,7 +38,7 @@
 
             <TextView
                 android:id="@+id/tvPromotedItemName"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/promoted_item_name_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/branding_margin_start"
                 android:layout_marginTop="@dimen/branding_margin_top"
@@ -67,7 +67,7 @@
 
             <TextView
                 android:id="@+id/tvPrice"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/branding_layout_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/branding_margin_start"
                 android:layout_marginTop="@dimen/branding_margin_top"
@@ -76,8 +76,7 @@
                 android:textAppearance="@android:style/TextAppearance.Material.Body2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPromotedItemName"
-                tools:text="Hello World" />
+                app:layout_constraintTop_toBottomOf="@+id/tvPromotedItemName"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
