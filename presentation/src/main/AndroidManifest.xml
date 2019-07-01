@@ -15,7 +15,7 @@
 
         <activity
             android:name="com.cleanarchitecture.presentation.splash.SplashActivity"
-            android:theme="@style/AppTheme.Immersive" />
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity-alias
             android:name=".LaunchActivity"
