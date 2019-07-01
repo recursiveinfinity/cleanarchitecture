@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="material_design_elevation">16dp</dimen>
+    <dimen name="branding_margin_top">26dp</dimen>
+    <dimen name="branding_margin_start">26dp</dimen>
+    <dimen name="branding_margin_end">26dp</dimen>
+    <dimen name="branding_padding_bottom">35dp</dimen>
+    <dimen name="promoted_item_height">237dp</dimen>
+    <dimen name="promoted_item_width">280dp</dimen>
+    <dimen name="promoted_item_card_height">480dp</dimen>
+
     <dimen name="products_image_width">127dp</dimen>
     <dimen name="products_image_height">108dp</dimen>
     <dimen name="material_design_spacing_small">4dp</dimen>

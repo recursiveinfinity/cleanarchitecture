@@ -19,6 +19,12 @@
     <string name="products_sort">Sort</string>
     <string name="products_filter">Filter</string>
 
+    <!-- home -->
+    <string name="promoted_item_price">£%1$s</string>
+    <string name="search_hint">Looking for something?</string>
+    <string name="browse_products_label">Browse Products</string>
+    <string name="promoted_items_label">Promoted Items</string>
+
     <!-- Albums -->
 
 

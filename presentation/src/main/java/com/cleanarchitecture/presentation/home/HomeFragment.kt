@@ -1,27 +1,29 @@
 package com.cleanarchitecture.presentation.home
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cleanarchitecture.news_sample_app.R
 import com.cleanarchitecture.presentation.common.ErrorViewType
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.extensions.inflate
 import com.cleanarchitecture.presentation.navigation.AppNavigator
-import com.cleanarchitecture.presentation.search.SearchViewModel
-import com.cleanarchitecture.presentation.search.UiSearchNavigation
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.lang.IllegalStateException
 
 class HomeFragment : Fragment() {
 
     private lateinit var navigator: AppNavigator
-    private val searchViewModel: SearchViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModel()
+    private val promotedItemsAdapter = PromotedItemsAdapter()
 
     companion object {
         const val TAG = "HomeFragment"
@@ -30,33 +32,43 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = container?.inflate(R.layout.fragment_home)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? = container?.inflate(R.layout.fragment_home)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bt_home_albums.setOnClickListener { navigator.toProducts() }
+        rvPromotedItems.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvPromotedItems.adapter = promotedItemsAdapter
+        vpHeroProducts.adapter = HeroProductsPagerAdapter(fragmentManager ?:
+            throw IllegalStateException("Unexpected Error, Please retry again"))
+
+        val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        svHomeSearch.apply{
+            setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+            setIconifiedByDefault(false)
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        searchViewModel.loadingLiveData.observe(this, Observer {
+        homeViewModel.getLoadingObservable().observe(this, Observer {
             loading(it)
         })
-        searchViewModel.contentLiveData.observe(this, Observer {
+        homeViewModel.getContentObservable().observe(this, Observer {
             content(it)
         })
-        searchViewModel.errorLiveData.observe(this, Observer {
+        homeViewModel.getErrorObservable().observe(this, Observer {
             error(it)
         })
-        searchViewModel.getProducts()
+        homeViewModel.getPromotedItems()
     }
 
     private fun loading(isLoading: Boolean) {
 
     }
 
-    private fun content(it: UiSearchNavigation) {
-        Log.d("TAG", it.toString())
+    private fun content(result: List<UiPromotedItem>) {
+        promotedItemsAdapter.updateData(result)
     }
 
     private fun error(error: UiError) {
@@ -68,7 +80,7 @@ class HomeFragment : Fragment() {
                             .setMessage(error.message)
                             .setPositiveButton(error.positive) { dialog, _ ->
                                 dialog.dismiss()
-                                searchViewModel.getProducts()
+                                homeViewModel.getPromotedItems()
                             }
                             .setCancelable(error.cancelable)
                             .show()
