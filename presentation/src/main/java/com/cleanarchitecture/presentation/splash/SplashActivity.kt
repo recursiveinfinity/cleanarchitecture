@@ -11,6 +11,9 @@ import com.cleanarchitecture.presentation.navigation.AppNavigator
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import android.view.View
+import android.view.Window
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -19,7 +22,10 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(com.cleanarchitecture.news_sample_app.R.layout.activity_splash)
+
+        //Makes Activity go FullScreen
+        window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
         splashViewModel.getContentObservable().observe(this, Observer { content() })
         splashViewModel.getErrorObservable().observe(this, Observer { error(it) })
