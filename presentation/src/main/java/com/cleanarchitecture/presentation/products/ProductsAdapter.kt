@@ -28,6 +28,7 @@ class ProductsAdapter(val onItemClick: (UiResult?) -> Unit) : RecyclerView.Adapt
 
         fun bind(result: UiResult) {
             with(itemView) {
+
                 tvProductPrice.text = result.price.toString()
                 tvReviewNumbers.text = result.reevoo_count.toString()
                 Picasso.get().load(result.image).into(ivProduct)

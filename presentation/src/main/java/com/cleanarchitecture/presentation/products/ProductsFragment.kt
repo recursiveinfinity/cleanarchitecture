@@ -58,7 +58,7 @@ class ProductsFragment : Fragment() {
             loading(it)
         })
         productViewModel.getContentObservable().observe(this, Observer {
-            content(it)
+            content(it.searchNavigation)
         })
         productViewModel.getErrorObservable().observe(this, Observer {
             error(it)
