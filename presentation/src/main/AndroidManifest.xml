@@ -62,5 +62,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.cleanarchitecture.presentation.products.ProductsActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar.Grey">
+            <intent-filter>
+                <action android:name="${nav_uri}.products" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>

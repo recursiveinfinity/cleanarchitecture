@@ -5,12 +5,12 @@ import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.home.DomainPromotedItem
 import com.cleanarchitecture.domain.home.PromotedItemsRepository
 import com.richrelevance.recommendations.RecommendedProduct
+import io.reactivex.Single
 
 class PromotedItemsRepositoryImpl(private val remoteDataStore: RichRelevanceRemoteDataStore,
                                   private val promotedItemMapper
-                                  : Mapper<RecommendedProduct, DomainPromotedItem>)
-    : PromotedItemsRepository {
+                                  : Mapper<RecommendedProduct, DomainPromotedItem>) : PromotedItemsRepository {
 
-    override fun getPromotedItems() = remoteDataStore.getPromotedProducts()
+    override fun getPromotedItems(): Single<List<DomainPromotedItem>> = remoteDataStore.getPromotedProducts()
             .map { promotedItemMapper.mapList(it.placements.first().recommendedProducts) }
 }

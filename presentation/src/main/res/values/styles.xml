@@ -7,12 +7,14 @@
         <item name="elevation">0dp</item>
     </style>
 
+
     <style name="ThemeBaseOverlay.AppCompat.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/white</item>
     </style>
 
     <style name="ThemeOverlay.AppCompat.ActionBar.White" parent="ThemeBaseOverlay.AppCompat.ActionBar">
         <item name="colorPrimary">@color/white</item>
+        <item name="android:actionModeBackground">@color/white</item>
     </style>
 
     <style name="ThemeOverlay.AppCompat.ActionBar.Grey" parent="ThemeBaseOverlay.AppCompat.ActionBar">
@@ -25,4 +27,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="RatingBar">
+        <item name="android:colorControlNormal">@color/progressGrey</item>
+        <item name="android:colorControlActivated">@color/yellow</item>
+    </style>
+
+    <color name="yellow">#EE9022</color>
 </resources>

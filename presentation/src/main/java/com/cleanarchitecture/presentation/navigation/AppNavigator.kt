@@ -47,4 +47,10 @@ class AppNavigator(private val activity: Activity) : Navigator {
             activity.startActivity(this)
         }
     }
+
+    override fun toProducts() {
+        createIntentFromAction("products").apply {
+            activity.startActivity(this)
+        }
+    }
 }

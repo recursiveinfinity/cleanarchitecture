@@ -37,5 +37,12 @@
     <dimen name="browse_products_horizontal_bias">0.1</dimen>
     <dimen name="page_indicator_radius">4dp</dimen>
     <dimen name="promoted_item_name_width">0dp</dimen>
-
+    <dimen name="products_image_width">127dp</dimen>
+    <dimen name="products_image_height">108dp</dimen>
+    <dimen name="material_design_spacing_small">4dp</dimen>
+    <dimen name="material_design_spacing_medium">8dp</dimen>
+    <dimen name="material_design_spacing_mediumlarge">12dp</dimen>
+    <dimen name="material_design_spacing_large">16dp</dimen>
+    <dimen name="products_rating_bar_height">24dp</dimen>
+    <dimen name="products_card_width">167dp</dimen>
 </resources>

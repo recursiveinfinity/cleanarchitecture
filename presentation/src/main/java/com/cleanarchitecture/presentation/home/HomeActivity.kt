@@ -10,6 +10,7 @@ import com.cleanarchitecture.presentation.common.FragmentsTransactionsManager
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.consume
 import com.cleanarchitecture.presentation.navigation.AppNavigator
+import com.cleanarchitecture.presentation.products.ProductsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -33,6 +34,11 @@ class HomeActivity : AppCompatActivity() {
             fragment = HomeFragment.newInstance(navigator),
             tag = HomeFragment.TAG,
             titleId = R.string.bnav_title_home)
+
+    private fun toProducts() = goTo(
+            fragment = ProductsFragment.newInstance(navigator),
+            tag = ProductsFragment.TAG,
+            titleId = R.string.bnav_title_products)
 
     private fun toSearch() = goTo(
             fragment = HomeFragment.newInstance(navigator),
@@ -60,7 +66,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setToolbar(titleId: Int) {
-        toolbar_title.apply {
+        tv_home_title.apply {
             text = getString(titleId)
         }
     }
@@ -76,7 +82,7 @@ class HomeActivity : AppCompatActivity() {
             when (itemId) {
                 R.id.bottom_nav_home -> toHome()
                 R.id.bottom_nav_search -> toSearch()
-                R.id.bottom_nav_basket -> toBasket()
+                R.id.bottom_nav_basket -> toProducts()
                 R.id.bottom_nav_wishlist -> toWishlist()
                 R.id.bottom_nav_more -> toMore()
             }

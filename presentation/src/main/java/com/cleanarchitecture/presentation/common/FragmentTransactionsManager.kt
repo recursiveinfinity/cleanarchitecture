@@ -43,6 +43,9 @@ class FragmentsTransactionsManager(private val fm: FragmentManager) {
                 .commit()
     }
 
+
+
+
     fun hideFragment(fragment: Fragment) {
         fm.beginTransaction()
                 .hide(fragment)

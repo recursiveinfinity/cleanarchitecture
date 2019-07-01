@@ -1,5 +1,8 @@
 package com.cleanarchitecture.presentation.search
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 data class UiSearchNavigation(
         val general: UiGeneral,
         val banners: List<UiBanners>,
@@ -18,7 +21,7 @@ data class UiBanners(
 
 data class UiDefault(
         val name: String,
-        val results: List<UiResults>
+        val results: List<UiResult>
 )
 
 data class UiFacets(
@@ -81,18 +84,19 @@ data class UiResultCount(
         val pageupper: Int
 )
 
-data class UiResults(
-        val id: Int,
+@Parcelize
+data class UiResult(
+        val id: String,
         val sku: Int,
         val title: String,
         val brand: String,
-        val price: Double,
+        val price: String,
         val image: String,
         val reevoo_score: Double,
         val reevoo_count: Int,
         val discount: String,
         val short_description: String
-)
+): Parcelable
 
 data class UiResultsets(
         val default: UiDefault

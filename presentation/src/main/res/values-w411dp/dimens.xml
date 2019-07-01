@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+     411 bucket is 15% larger than the 360 bucket.
+    -->
+
+    <dimen name="material_design_elevation">18.4dp</dimen>
+    <dimen name="products_image_width">182.5dp</dimen>
+    <dimen name="products_image_height">155.98dp</dimen>
+    <dimen name="material_design_spacing_small">4.6dp</dimen>
+    <dimen name="material_design_spacing_medium">9.2dp</dimen>
+    <dimen name="material_design_spacing_mediumlarge">13.8dp</dimen>
+    <dimen name="material_design_spacing_large">18.4dp</dimen>
+    <dimen name="products_rating_bar_height">27.6dp</dimen>
+    <dimen name="products_card_width">192dp</dimen>
+</resources>
