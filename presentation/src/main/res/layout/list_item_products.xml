@@ -42,12 +42,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/material_design_spacing_mediumlarge"
             android:layout_marginTop="@dimen/material_design_spacing_mediumlarge"
-            android:textColor="@color/price_red"
+            android:textColor="@color/nearblack"
             android:textSize="@dimen/text_5"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvProductDescription"
             tools:text="TextView" />
+
 
         <TextView
             android:id="@+id/tvProductSavePrice"
@@ -56,21 +57,22 @@
             android:layout_marginStart="@dimen/material_design_spacing_medium"
             android:layout_marginTop="@dimen/material_design_spacing_mediumlarge"
             android:layout_marginEnd="@dimen/material_design_spacing_mediumlarge"
-            android:textColor="@color/nearblack"
+            android:textColor="@color/price_red"
             android:textSize="@dimen/text_5"
             app:layout_constraintStart_toEndOf="@id/tvProductPrice"
             app:layout_constraintTop_toBottomOf="@+id/tvProductDescription"
             tools:text="TextView" />
+
 
         <RatingBar
             android:id="@+id/rtProductRating"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:theme="@style/RatingBar"
             android:layout_marginStart="@dimen/material_design_spacing_mediumlarge"
             android:layout_marginTop="@dimen/material_design_spacing_mediumlarge"
             android:layout_marginBottom="@dimen/material_design_spacing_large"
+            android:theme="@style/RatingBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvProductPrice" />
 
@@ -85,13 +87,39 @@
             app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
             tools:text="TextView" />
 
+        <TextView
+            android:id="@+id/tvGuarantee"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:layout_marginStart="@dimen/material_design_spacing_medium"
+            android:layout_marginTop="@dimen/material_design_spacing_mediumlarge"
+            android:layout_marginEnd="@dimen/material_design_spacing_mediumlarge"
+            android:background="@drawable/tv_rectangle_bg"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rtProductRating" />
+
+        <TextView
+            android:id="@+id/tvDelivery"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:layout_marginStart="@dimen/material_design_spacing_medium"
+            android:layout_marginTop="@dimen/material_design_spacing_mediumlarge"
+            android:layout_marginEnd="@dimen/material_design_spacing_mediumlarge"
+            android:drawableBottom="@drawable/plp_icon_delivery_active"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGuarantee" />
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/material_design_spacing_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rtProductRating" />
+            app:layout_constraintTop_toBottomOf="@id/tvDelivery" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

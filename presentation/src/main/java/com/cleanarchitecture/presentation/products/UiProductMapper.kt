@@ -32,7 +32,7 @@ class UiProductMapper : Mapper<DomainProducts, UiProducts> {
             deliveryOptions = product?.deliveryOptions?.map { toDeliveryOptions(it) },
             energyEfficiency = product?.energyEfficiency,
             icons = product?.icons,
-            badges = product?.badges,
+            badges = product?.badges?.map { toBadges(it) },
             customerReview = toCustomerReview(product?.customerReview)
     )
 
@@ -55,6 +55,8 @@ class UiProductMapper : Mapper<DomainProducts, UiProducts> {
             label = deliveryOption.label,
             enabled = deliveryOption.enabled
     )
+
+
 
     private fun toForwardOrder(forwardOrder: DomainForwardOrder?): UiForwardOrder? = UiForwardOrder(
             available = forwardOrder?.available,
@@ -115,5 +117,10 @@ class UiProductMapper : Mapper<DomainProducts, UiProducts> {
     private fun toBrand(brand: DomainBrand?): UiBrand? = UiBrand(
             id = brand?.id,
             label = brand?.label
+    )
+    private fun toBadges(badge: DomainBadges?): UiBadge = UiBadge(
+            name  = badge?.name,
+            link  = badge?.link,
+            imageUrl = badge?.imageUrl
     )
 }

@@ -27,8 +27,31 @@ class ProductsAdapter(val onItemClick: (UiProductListing?) -> Unit) : RecyclerVi
 
         fun bind(productListing: UiProductListing) {
             with(itemView) {
+
+
                 tvProductPrice.text = productListing.result.price
-                tvProductSavePrice.text = productListing.product.wasPrice?.discountAmount
+
+                if (productListing.product.badges?.isNotEmpty() == true) {
+                    tvGuarantee.text = productListing.product.badges?.get(0)?.name
+                } else
+                    tvGuarantee.visibility = View.GONE
+                if (productListing.product.wasPrice?.discountAmount?.isNotEmpty() == true) {
+
+                    tvProductSavePrice.text = "Save " + productListing.product.wasPrice?.discountAmount
+
+                }
+
+                if (productListing.product.deliveryOptions?.isNotEmpty() == true) {
+                    if (productListing.product.deliveryOptions?.get(1)?.label.toString() == "Home delivery") {
+                        if (productListing.product.deliveryOptions?.get(2)?.enabled.toString() == "true") {
+                            tvDelivery.visibility = View.VISIBLE
+                        }
+
+
+                    }
+
+                }
+
                 tvReviewNumbers.text = productListing.result.reevoo_count.toString()
                 Picasso.get().load(productListing.result.image).into(ivProduct)
                 rtProductRating.rating = productListing.result.reevoo_score.toFloat() / 2

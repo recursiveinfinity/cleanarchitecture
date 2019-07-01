@@ -26,7 +26,7 @@ data class UiProduct(
         var deliveryOptions: List<UiDeliveryOption>? = null,
         var energyEfficiency: Any? = null,
         var icons: List<Any>? = null,
-        var badges: List<Any>? = null,
+        var badges: List<UiBadge>? = null,
         var customerReview: UiCustomerReview? = null
 )
 
@@ -45,6 +45,12 @@ data class UiCategorisation(
 data class UiCustomerReview(
         var number: Int? = null,
         var averageScore: Double? = null
+)
+
+data class UiBadge(
+        val name: String? = null,
+        val link: String? = null,
+        val imageUrl : String? = null
 )
 
 data class UiDeliveryOption(

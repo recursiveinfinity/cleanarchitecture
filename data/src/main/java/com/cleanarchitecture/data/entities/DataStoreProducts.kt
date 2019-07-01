@@ -52,7 +52,7 @@ data class DataProduct(
         @SerializedName("icons")
         var icons: List<Any>? = null,
         @SerializedName("badges")
-        var badges: List<Any>? = null,
+        var badges: List<DataBadges>? = null,
         @SerializedName("customerReview")
         var customerReview: DataCustomerReview? = null
 )
@@ -62,6 +62,16 @@ data class DataBrand(
         var id: String? = null,
         @SerializedName("label")
         var label: String? = null
+
+)
+
+data class DataBadges(
+        @SerializedName("name")
+        var name: String? = null,
+        @SerializedName("link")
+        var link: String? = null,
+        @SerializedName("imageUrl")
+        var imageUrl: String? = null
 
 )
 

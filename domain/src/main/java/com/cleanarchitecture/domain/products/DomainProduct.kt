@@ -35,8 +35,14 @@ data class DomainProduct(
         var deliveryOptions: List<DomainDeliveryOption>? = null,
         var energyEfficiency: Any? = null,
         var icons: List<Any>? = null,
-        var badges: List<Any>? = null,
+        var badges: List<DomainBadges>? = null,
         var customerReview: DomainCustomerReview? = null
+)
+
+data class DomainBadges(
+        val name: String? = null,
+        val link: String? = null,
+        val imageUrl : String? = null
 )
 
 data class DomainBrand(
