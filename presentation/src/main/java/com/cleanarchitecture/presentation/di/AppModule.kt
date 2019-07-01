@@ -12,7 +12,7 @@ import com.cleanarchitecture.data.repository.SearchRepositoryImpl
 import com.cleanarchitecture.data.repository.StoreRepositoryImpl
 import com.cleanarchitecture.domain.albums.AlbumsRepository
 import com.cleanarchitecture.domain.albums.GetAlbumsUseCase
-import com.cleanarchitecture.domain.albums.GetProductsUseCase
+import com.cleanarchitecture.domain.products.GetProductsUseCase
 import com.cleanarchitecture.domain.products.StoreRepository
 import com.cleanarchitecture.domain.searchnavigation.GetProductsBySearchAsYouTypeUseCase
 import com.cleanarchitecture.domain.searchnavigation.GetProductsBySearchAutocompleteUseCase

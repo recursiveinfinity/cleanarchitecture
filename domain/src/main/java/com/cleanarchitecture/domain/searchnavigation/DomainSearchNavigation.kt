@@ -82,7 +82,7 @@ data class DomainResultCount(
 )
 
 data class DomainResult(
-        val id: Int,
+        val id: String,
         val sku: Int,
         val title: String,
         val brand: String,

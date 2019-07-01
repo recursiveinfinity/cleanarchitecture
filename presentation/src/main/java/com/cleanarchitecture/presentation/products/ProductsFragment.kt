@@ -48,7 +48,6 @@ class ProductsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialiseView()
-
     }
 
 
@@ -64,10 +63,7 @@ class ProductsFragment : Fragment() {
             error(it)
         })
         productViewModel.getProducts()
-
-
     }
-
 
     private fun initialiseView() {
         productAdapter = ProductsAdapter(onItemClick)

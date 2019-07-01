@@ -1,9 +1,7 @@
-package com.cleanarchitecture.domain.albums
+package com.cleanarchitecture.domain.products
 
 import com.cleanarchitecture.domain.common.SingleNoParamsUseCase
 import com.cleanarchitecture.domain.common.SingleRxTransformer
-import com.cleanarchitecture.domain.products.DomainProductListing
-import com.cleanarchitecture.domain.products.StoreRepository
 import com.cleanarchitecture.domain.searchnavigation.DomainSearchNavigation
 import com.cleanarchitecture.domain.searchnavigation.SearchRepository
 import io.reactivex.Single
@@ -22,7 +20,7 @@ class GetProductsUseCase(transformer: SingleRxTransformer<DomainProductListing>,
             searchRepository.getNavigation()
                     .flatMap { searchNavigation ->
                         getProductIds(searchNavigation)
-                                .flatMap {  productIds ->
+                                .flatMap { productIds ->
                                     storeRepository.getProducts(productIds)
                                 }
                                 .map { products ->
@@ -30,17 +28,10 @@ class GetProductsUseCase(transformer: SingleRxTransformer<DomainProductListing>,
                                 }
                     }
 
-    private fun getProductIds(searchNavigation: DomainSearchNavigation): Single<List<Int>> =
+    private fun getProductIds(searchNavigation: DomainSearchNavigation): Single<List<String>> =
             Single.just(searchNavigation)
                     .toObservable()
                     .flatMapIterable { it.resultsets.default.results }
                     .map { it.id }
                     .toList()
 }
-
-
-//flatMap { searchNavigation ->
-//                storeRepository.getProducts(10185460).flatMap  { products ->
-//                    Single.just(searchNavigation)
-//                }
-//            }

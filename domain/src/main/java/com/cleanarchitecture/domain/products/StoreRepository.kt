@@ -8,5 +8,5 @@ import io.reactivex.Single
  */
 interface StoreRepository {
     fun getProducts(productId: Int): Single<DomainProducts>
-    fun getProducts(productId: List<Int>): Single<DomainProducts>
+    fun getProducts(productId: List<String>): Single<DomainProducts>
 }

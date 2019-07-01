@@ -179,9 +179,9 @@ data class DataWasPrice(
         @SerializedName("currencyCode")
         var currencyCode: String?,
         @SerializedName("dateFrom")
-        var dateFrom: Int? = null,
+        var dateFrom: String? = null,
         @SerializedName("dateTo")
-        var dateTo: Int? = null,
+        var dateTo: String? = null,
         @SerializedName("discountAmount")
         var discountAmount: Int? = null
 

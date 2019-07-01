@@ -86,7 +86,7 @@ data class UiResultCount(
 
 @Parcelize
 data class UiResult(
-        val id: Int,
+        val id: String,
         val sku: Int,
         val title: String,
         val brand: String,
