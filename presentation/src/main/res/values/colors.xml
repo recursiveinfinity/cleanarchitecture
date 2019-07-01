@@ -11,4 +11,9 @@
     <!-- Splash -->
     <color name="branding_blue">#2b2b79</color>
     <color name="branding_purple">#7e1b72</color>
+
+
+    <!-- Common Styling -->
+    <color name="branding_heading_text">#4855A0</color>
+    <color name="branding_background">#D8D8D8</color>
 </resources>

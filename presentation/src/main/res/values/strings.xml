@@ -15,6 +15,12 @@
     <string name="albums">Albums</string>
     <string name="cd_logo">Logo of Curry\'s PC World</string>
 
+    <!-- home -->
+    <string name="promoted_item_price">£%1$s</string>
+    <string name="search_hint">Looking for something?</string>
+    <string name="browse_products_label">Browse Products</string>
+    <string name="promoted_items_label">Promoted Items</string>
+
     <!-- Albums -->
 
 
