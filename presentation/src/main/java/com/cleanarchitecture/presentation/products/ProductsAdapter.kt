@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cleanarchitecture.news_sample_app.R
-import com.cleanarchitecture.presentation.search.UiResult
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_products.view.*
 
-class ProductsAdapter(val onItemClick: (UiResult?) -> Unit) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
+class ProductsAdapter(val onItemClick: (UiProductListing?) -> Unit) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
-    var products = mutableListOf<UiResult>()
+    var products = mutableListOf<UiProductListing>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -26,22 +25,22 @@ class ProductsAdapter(val onItemClick: (UiResult?) -> Unit) : RecyclerView.Adapt
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(result: UiResult) {
+        fun bind(productListing: UiProductListing) {
             with(itemView) {
-
-                tvProductPrice.text = result.price.toString()
-                tvReviewNumbers.text = result.reevoo_count.toString()
-                Picasso.get().load(result.image).into(ivProduct)
-                rtProductRating.rating = result.reevoo_score.toFloat() / 2
-                tvProductDescription.text = result.short_description
+                tvProductPrice.text = productListing.result.price
+                tvProductSavePrice.text = productListing.product.wasPrice?.discountAmount
+                tvReviewNumbers.text = productListing.result.reevoo_count.toString()
+                Picasso.get().load(productListing.result.image).into(ivProduct)
+                rtProductRating.rating = productListing.result.reevoo_score.toFloat() / 2
+                tvProductDescription.text = productListing.result.short_description
                 setOnClickListener {
-                    onItemClick.invoke(result)
+                    onItemClick.invoke(productListing)
                 }
             }
         }
     }
 
-    fun updateList(list: List<UiResult>) {
+    fun updateList(list: List<UiProductListing>) {
         if (list.isNotEmpty()) {
             products.clear()
             products.addAll(list)

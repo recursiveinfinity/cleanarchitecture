@@ -12,8 +12,6 @@ import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.consume
 import com.cleanarchitecture.presentation.common.extensions.inflate
 import com.cleanarchitecture.presentation.navigation.AppNavigator
-import com.cleanarchitecture.presentation.search.UiResult
-import com.cleanarchitecture.presentation.search.UiSearchNavigation
 import kotlinx.android.synthetic.main.fragment_products.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -29,10 +27,10 @@ class ProductsFragment : Fragment() {
         }
     }
 
-    private val onItemClick: ((UiResult?) -> Unit) = {
-        it?.let { product ->
-
-        }
+    private val onItemClick: ((UiProductListing?) -> Unit) = {
+//        it?.let { product ->
+//
+//        }
     }
 
     private lateinit var productAdapter: ProductsAdapter
@@ -57,7 +55,7 @@ class ProductsFragment : Fragment() {
             loading(it)
         })
         productViewModel.getContentObservable().observe(this, Observer {
-            content(it.searchNavigation)
+            content(it)
         })
         productViewModel.getErrorObservable().observe(this, Observer {
             error(it)
@@ -94,9 +92,9 @@ class ProductsFragment : Fragment() {
         pb_products.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    private fun content(it: UiSearchNavigation) {
+    private fun content(it: List<UiProductListing>) {
         it.let { response ->
-            productAdapter.updateList(response.resultsets.default.results)
+            productAdapter.updateList(response)
         }
     }
 

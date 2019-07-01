@@ -56,7 +56,6 @@
             android:layout_marginStart="@dimen/material_design_spacing_medium"
             android:layout_marginTop="@dimen/material_design_spacing_mediumlarge"
             android:layout_marginEnd="@dimen/material_design_spacing_mediumlarge"
-            android:text=" Save £9000"
             android:textColor="@color/nearblack"
             android:textSize="@dimen/text_5"
             app:layout_constraintStart_toEndOf="@id/tvProductPrice"

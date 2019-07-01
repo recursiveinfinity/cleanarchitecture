@@ -2,6 +2,7 @@ package com.cleanarchitecture.presentation.products
 
 import com.cleanarchitecture.domain.common.Mapper
 import com.cleanarchitecture.domain.products.*
+import com.cleanarchitecture.presentation.common.CurrencyFormatter
 
 class UiProductMapper : Mapper<DomainProducts, UiProducts> {
 
@@ -41,7 +42,7 @@ class UiProductMapper : Mapper<DomainProducts, UiProducts> {
             currencyCode = wasPrice?.currencyCode,
             dateFrom = wasPrice?.dateFrom,
             dateTo = wasPrice?.dateTo,
-            discountAmount = wasPrice?.discountAmount
+            discountAmount = wasPrice?.discountAmount?.let { CurrencyFormatter.format(String.format("%.2f", it.toDouble() / 100).toDouble()) }
     )
 
     private fun toCustomerReview(customerReview: DomainCustomerReview?): UiCustomerReview? = UiCustomerReview(

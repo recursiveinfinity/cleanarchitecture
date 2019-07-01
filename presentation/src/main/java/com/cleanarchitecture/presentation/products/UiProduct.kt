@@ -108,5 +108,5 @@ data class UiWasPrice(
         var currencyCode: String? = null,
         var dateFrom: String? = null,
         var dateTo: String? = null,
-        var discountAmount: Int? = null
+        var discountAmount: String? = null
 )

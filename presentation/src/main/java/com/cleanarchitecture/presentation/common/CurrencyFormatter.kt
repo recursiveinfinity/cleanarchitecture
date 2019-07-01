@@ -11,5 +11,7 @@ class CurrencyFormatter {
                     format.currency = Currency.getInstance(currency)
                     format.format(money)
                 } ?: ""
+
+        fun format(money: Int?, currency: Locale = Locale.UK): String = format(money?.toDouble(), currency)
     }
 }
