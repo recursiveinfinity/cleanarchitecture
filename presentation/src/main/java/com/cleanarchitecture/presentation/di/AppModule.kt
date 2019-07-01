@@ -50,15 +50,13 @@ val repositoryModules = module {
     single { SearchRemoteDataStore(api = get()) }
     single { StoreRemoteDataStore(api = get()) }
 
-
     single<AlbumsRepository> { AlbumsRepositoryImpl(remote = get()) }
     single<PromotedItemsRepository> {
         PromotedItemsRepositoryImpl(remoteDataStore = get(),
                 promotedItemMapper = get())
     }
     single<SearchRepository> { SearchRepositoryImpl(remote = get()) }
-    single<StoreRepository> { StoreRepositoryImpl(remote = get(STORE_REMOTE_DATASTORE)) }
-
+    single<StoreRepository> { StoreRepositoryImpl(remote = get()) }
 }
 
 val useCaseModules = module {
@@ -86,7 +84,6 @@ val networkModules = module {
     single { (get(RETROFIT_INSTANCE1) as Retrofit).create(AlbumsApi::class.java) }
     single { (get(RETROFIT_INSTANCE2) as Retrofit).create(SearchApi::class.java) }
     single { (get(RETROFIT_INSTANCE3) as Retrofit).create(StoreApi::class.java) }
-
 }
 
 val viewModels = module {
