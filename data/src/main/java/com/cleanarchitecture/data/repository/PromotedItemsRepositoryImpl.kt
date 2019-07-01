@@ -9,8 +9,7 @@ import io.reactivex.Single
 
 class PromotedItemsRepositoryImpl(private val remoteDataStore: RichRelevanceRemoteDataStore,
                                   private val promotedItemMapper
-                                  : Mapper<RecommendedProduct, DomainPromotedItem>)
-    : PromotedItemsRepository {
+                                  : Mapper<RecommendedProduct, DomainPromotedItem>) : PromotedItemsRepository {
 
     override fun getPromotedItems(): Single<List<DomainPromotedItem>> = remoteDataStore.getPromotedProducts()
             .map { promotedItemMapper.mapList(it.placements.first().recommendedProducts) }
