@@ -48,7 +48,6 @@ class ProductsFragment : Fragment() {
         initialiseView()
     }
 
-
     override fun onStart() {
         super.onStart()
         productViewModel.getLoadingObservable().observe(this, Observer {

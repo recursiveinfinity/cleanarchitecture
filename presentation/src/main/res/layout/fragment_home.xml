@@ -10,7 +10,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/svHomeSearch"
+            android:id="@+id/sv_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/searchview_margin_start"
@@ -25,7 +25,7 @@
             app:queryBackground="@android:color/transparent" />
 
         <View
-            android:id="@+id/viewSearchBackground"
+            android:id="@+id/v_home_search_background"
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_background_height"
             android:background="@android:color/white"
@@ -35,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/viewBrowseProductsBackground"
+            android:id="@+id/v_home_browse_background"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/browse_products_height"
             android:layout_marginStart="@dimen/browse_products_margin_start"
@@ -43,19 +43,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="@dimen/browse_products_horizontal_bias"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/svHomeSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/sv_home" />
 
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vpHeroProducts"
+            android:id="@+id/vp_home_hero"
             android:layout_width="match_parent"
             android:layout_height="@dimen/viewpager_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewBrowseProductsBackground" />
+            app:layout_constraintTop_toBottomOf="@+id/v_home_browse_background" />
 
         <com.rd.PageIndicatorView
-            android:id="@+id/pivPagerIndicator"
+            android:id="@+id/piv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/page_indicator_margin_start"
@@ -63,47 +63,47 @@
             android:layout_marginEnd="@dimen/page_indicator_margin_end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vpHeroProducts"
+            app:layout_constraintTop_toBottomOf="@+id/vp_home_hero"
             app:piv_radius="@dimen/page_indicator_radius"
             app:piv_selectedColor="@android:color/darker_gray"
             app:piv_unselectedColor="@android:color/secondary_text_dark"
-            app:piv_viewPager="@id/vpHeroProducts" />
+            app:piv_viewPager="@id/vp_home_hero" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPromotedItems"
+            android:id="@+id/rv_home_richrelevance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/rv_promoteditems_margin_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="@dimen/horizontal_bias"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPromotedItems" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_home_richrelevance_title" />
 
         <ImageView
-            android:id="@+id/ivBrowseProductsIcon"
+            android:id="@+id/iv_home_browse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/browse_products_icon_margin_top"
             android:layout_marginEnd="@dimen/browse_products_icon_margin_end"
-            app:layout_constraintEnd_toStartOf="@+id/tvBrowseProducts"
-            app:layout_constraintTop_toTopOf="@+id/tvBrowseProducts"
+            app:layout_constraintEnd_toStartOf="@+id/tv_home_browse"
+            app:layout_constraintTop_toTopOf="@+id/tv_home_browse"
             app:srcCompat="@drawable/ic_browser_products_icon" />
 
         <TextView
-            android:id="@+id/tvBrowseProducts"
+            android:id="@+id/tv_home_browse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/browse_products_margin_top"
             android:layout_marginEnd="@dimen/browse_products_margin_end"
             android:layout_marginBottom="@dimen/browse_products_margin_bottom"
             android:text="@string/browse_products_label"
-            app:layout_constraintBottom_toTopOf="@+id/vpHeroProducts"
-            app:layout_constraintEnd_toEndOf="@+id/viewBrowseProductsBackground"
-            app:layout_constraintStart_toStartOf="@+id/viewBrowseProductsBackground"
-            app:layout_constraintTop_toTopOf="@+id/viewBrowseProductsBackground" />
+            app:layout_constraintBottom_toTopOf="@+id/vp_home_hero"
+            app:layout_constraintEnd_toEndOf="@+id/v_home_browse_background"
+            app:layout_constraintStart_toStartOf="@+id/v_home_browse_background"
+            app:layout_constraintTop_toTopOf="@+id/v_home_browse_background" />
 
         <TextView
-            android:id="@+id/tvPromotedItems"
+            android:id="@+id/tv_home_richrelevance_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/promoted_items_margin_start"
@@ -111,7 +111,16 @@
             android:text="@string/promoted_items_label"
             android:textAppearance="@style/DixonsSubHeading"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pivPagerIndicator" />
+            app:layout_constraintTop_toBottomOf="@+id/piv_home" />
+
+        <ProgressBar
+            android:id="@+id/pb_home_richrelevance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

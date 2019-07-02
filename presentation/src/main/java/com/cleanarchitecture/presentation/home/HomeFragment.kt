@@ -17,13 +17,12 @@ import com.cleanarchitecture.presentation.common.extensions.inflate
 import com.cleanarchitecture.presentation.navigation.AppNavigator
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.lang.IllegalStateException
 
 class HomeFragment : Fragment() {
 
     private lateinit var navigator: AppNavigator
     private val homeViewModel: HomeViewModel by viewModel()
-    private val promotedItemsAdapter = PromotedItemsAdapter()
+    private val promotedItemsAdapter = RichRelevanceHomeAdapter()
 
     companion object {
         const val TAG = "HomeFragment"
@@ -37,13 +36,13 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvPromotedItems.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        rvPromotedItems.adapter = promotedItemsAdapter
-        vpHeroProducts.adapter = HeroProductsPagerAdapter(fragmentManager ?:
-            throw IllegalStateException("Unexpected Error, Please retry again"))
+        rv_home_richrelevance.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rv_home_richrelevance.adapter = promotedItemsAdapter
+        vp_home_hero.adapter = HeroProductsPagerAdapter(fragmentManager
+                ?: throw IllegalStateException("Unexpected Error, Please retry again"))
 
         val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        svHomeSearch.apply{
+        sv_home.apply {
             setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
             setIconifiedByDefault(false)
         }
@@ -64,7 +63,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun loading(isLoading: Boolean) {
-
+        pb_home_richrelevance.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun content(result: List<UiPromotedItem>) {
