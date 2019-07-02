@@ -33,7 +33,7 @@ class ProductMapper : Mapper<DataProducts, DomainProducts> {
             deliveryOptions = product.deliveryOptions?.map { toDeliveryOptions(it) },
             energyEfficiency = product.energyEfficiency,
             icons = product.icons,
-            badges = product.badges,
+            badges = product.badges?.map { toBadges(it) },
             customerReview = toCustomerReview(product.customerReview)
     )
 
@@ -117,6 +117,13 @@ class ProductMapper : Mapper<DataProducts, DomainProducts> {
     private fun toBrand(brand: DataBrand?): DomainBrand? = DomainBrand(
             id = brand?.id,
             label = brand?.label
+    )
+
+    private fun toBadges(badges: DataBadges?): DomainBadges = DomainBadges(
+            name = badges?.name,
+            link = badges?.link,
+            imageUrl = badges?.imageUrl
+
     )
 }
 
