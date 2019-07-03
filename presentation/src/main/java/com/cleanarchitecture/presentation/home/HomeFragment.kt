@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cleanarchitecture.news_sample_app.R
+import com.cleanarchitecture.news_sample_app.databinding.FragmentHomeBinding
 import com.cleanarchitecture.presentation.common.ErrorViewType
 import com.cleanarchitecture.presentation.common.UiError
 import com.cleanarchitecture.presentation.common.extensions.inflate
@@ -32,7 +34,13 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? = container?.inflate(R.layout.fragment_home)
+                              savedInstanceState: Bundle?): View? {
+        val homeBinding = DataBindingUtil
+                .inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false)
+        homeBinding.viewModel = homeViewModel
+        homeBinding.lifecycleOwner = activity
+        return homeBinding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,17 +49,12 @@ class HomeFragment : Fragment() {
         vp_home_hero.adapter = HeroProductsPagerAdapter(fragmentManager
                 ?: throw IllegalStateException("Unexpected Error, Please retry again"))
 
-        val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        sv_home.apply {
-            setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
-            setIconifiedByDefault(false)
-        }
     }
 
     override fun onStart() {
         super.onStart()
         homeViewModel.getLoadingObservable().observe(this, Observer {
-            loading(it)
+            //loading(it)
         })
         homeViewModel.getContentObservable().observe(this, Observer {
             content(it)
