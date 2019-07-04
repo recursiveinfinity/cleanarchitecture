@@ -28,12 +28,12 @@
                 android:id="@+id/toolbar_home"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar.White"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:contentInsetStartWithNavigation="@dimen/toolbar_content">
 
                 <ImageView
-                    android:layout_width="175dp"
+                    android:layout_width="@dimen/home_logo_width"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_currys_pcw_logo_splash"
                     android:layout_gravity="center"

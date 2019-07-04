@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="@dimen/promoted_item_card_width"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,9 +56,9 @@
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/branding_margin_top"
                 android:backgroundTint="@android:color/holo_orange_dark"
                 android:rating="@{promotedItem.rating}"
+                android:layout_marginTop="@dimen/branding_margin_top"
                 app:layout_constraintStart_toStartOf="@+id/tvPrice"
                 app:layout_constraintTop_toBottomOf="@+id/tvPrice"
                 tools:rating="3" />
@@ -82,10 +82,18 @@
                 android:id="@+id/tvRatingCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/branding_separator"
                 android:text="@{promotedItem.ratingCount}"
                 app:layout_constraintStart_toEndOf="@+id/rbPromotedItemRating"
                 app:layout_constraintTop_toTopOf="@+id/rbPromotedItemRating" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rbPromotedItemRating"
+                tools:layout_editor_absoluteX="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

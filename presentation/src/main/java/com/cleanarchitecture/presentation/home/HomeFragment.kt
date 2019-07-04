@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cleanarchitecture.news_sample_app.R
 import com.cleanarchitecture.news_sample_app.databinding.FragmentHomeBinding
@@ -44,7 +45,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rv_home_richrelevance.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rv_home_richrelevance.layoutManager = GridLayoutManager(context, 1,
+                GridLayoutManager.HORIZONTAL, false)
         rv_home_richrelevance.adapter = promotedItemsAdapter
         vp_home_hero.adapter = HeroProductsPagerAdapter(fragmentManager
                 ?: throw IllegalStateException("Unexpected Error, Please retry again"))

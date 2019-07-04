@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
     private val ftm: FragmentsTransactionsManager by inject { parametersOf(this) }
 
     private var selectedBottomTabId: Int = -1
-    private val defaultSection = 0
+    private val defaultSection = R.id.bottom_nav_home
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
